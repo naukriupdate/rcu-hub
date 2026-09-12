@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent direct access to sensitive system files and directories
+    RewriteRule ^(\.env|\.git|artisan|composer\.(json|lock)|package\.(json|lock)|phpunit\.xml) - [F,L,NC]
+    RewriteRule ^(app|bootstrap|config|database|storage|tests|vendor)(/.*)?$ - [F,L,NC]
+
+    # Route all normal requests into public directory for Hostinger shared hosting
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
