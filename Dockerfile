@@ -30,6 +30,10 @@ ENV PHP_ERRORS_STDERR=1
 ENV RUN_SCRIPTS=1
 ENV REAL_IP_HEADER=1
 ENV SKIP_COMPOSER=1
+# PHP_CATCHALL=1 tells start.sh to patch try_files fallback from =404 to /index.php?$args.
+# This is a secondary safety net. Primary fix is conf/nginx/nginx-site.conf which
+# start.sh auto-copies to /etc/nginx/sites-available/default.conf at container boot.
+ENV PHP_CATCHALL=1
 
 ENV APP_ENV=production
 ENV APP_DEBUG=false
