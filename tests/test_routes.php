@@ -23,6 +23,14 @@ $urls = [
     '/admin/login' => 200,
     '/admin' => 302,
     '/api/academic/programs?department_id=1' => 200,
+    '/resources?type=pyq' => 200,
+    '/resources?type=notes' => 200,
+    '/resources?type=1' => 200,
+    '/resources?course=bca' => 200,
+    '/resources?course=1' => 200,
+    '/resources?semester=3' => 200,
+    '/resources?semester=semester-3' => 200,
+    '/resources?course=bca&semester=3&type=pyq' => 200,
 ];
 
 $allPassed = true;

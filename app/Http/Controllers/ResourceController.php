@@ -30,24 +30,39 @@ class ResourceController extends Controller
 
         // Filters
         if ($request->filled('course')) {
-            $query->whereHas('program', function ($q) use ($request) {
-                $q->where('slug', $request->input('course'))
-                  ->orWhere('id', $request->input('course'));
+            $course = (string) $request->input('course');
+            $query->whereHas('program', function ($q) use ($course) {
+                $q->where(function ($sub) use ($course) {
+                    $sub->where('slug', $course);
+                    if (is_numeric($course)) {
+                        $sub->orWhere('id', (int) $course);
+                    }
+                });
             });
         }
 
         if ($request->filled('semester')) {
-            $query->whereHas('semester', function ($q) use ($request) {
-                $q->where('semester_number', $request->input('semester'))
-                  ->orWhere('slug', $request->input('semester'))
-                  ->orWhere('id', $request->input('semester'));
+            $semester = (string) $request->input('semester');
+            $query->whereHas('semester', function ($q) use ($semester) {
+                $q->where(function ($sub) use ($semester) {
+                    $sub->where('slug', $semester);
+                    if (is_numeric($semester)) {
+                        $sub->orWhere('semester_number', (int) $semester)
+                            ->orWhere('id', (int) $semester);
+                    }
+                });
             });
         }
 
         if ($request->filled('type')) {
-            $query->whereHas('resourceType', function ($q) use ($request) {
-                $q->where('slug', $request->input('type'))
-                  ->orWhere('id', $request->input('type'));
+            $type = (string) $request->input('type');
+            $query->whereHas('resourceType', function ($q) use ($type) {
+                $q->where(function ($sub) use ($type) {
+                    $sub->where('slug', $type);
+                    if (is_numeric($type)) {
+                        $sub->orWhere('id', (int) $type);
+                    }
+                });
             });
         }
 
