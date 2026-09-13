@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-[#f8f9fa]">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-[#f8f9fa] overflow-x-hidden max-w-full">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -87,14 +87,19 @@
     <style>
         [x-cloak] { display: none !important; }
         
-        /* Claymorphism Base Styling */
+        /* Strict Viewport Enclosure (No Horizontal Scrolling / Swipe) */
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: #2D3436;
             background: linear-gradient(135deg, #F8F6FF 0%, #F1EEFD 50%, #F5F2FF 100%);
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
         }
 
         /* Claymorphism Card Standard */
@@ -422,16 +427,18 @@
     </style>
     @stack('styles')
 </head>
-<body class="flex flex-col min-h-full text-clay-text antialiased selection:bg-[#6C5CE7] selection:text-white pb-20 lg:pb-0">
+<body class="flex flex-col min-h-full text-clay-text antialiased selection:bg-[#6C5CE7] selection:text-white pb-20 lg:pb-0 w-full max-w-full overflow-x-hidden">
 
-    <!-- FLOATING BACKGROUND CLAY BLOBS (Matches the reference 3D environment) -->
-    <div class="clay-blob-purple w-40 h-40 -top-10 -left-12 opacity-60"></div>
-    <div class="clay-blob-mint w-32 h-32 top-80 -right-10 opacity-55"></div>
-    <div class="clay-blob-yellow w-24 h-24 top-[48rem] -left-8 opacity-50"></div>
-    <div class="clay-blob-purple w-48 h-48 bottom-40 -right-16 opacity-50"></div>
+    <!-- FLOATING BACKGROUND CLAY BLOBS (Clipped container to prevent mobile horizontal overflow) -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+        <div class="clay-blob-purple w-40 h-40 -top-10 -left-12 opacity-60"></div>
+        <div class="clay-blob-mint w-32 h-32 top-80 -right-10 opacity-55"></div>
+        <div class="clay-blob-yellow w-24 h-24 top-[48rem] -left-8 opacity-50"></div>
+        <div class="clay-blob-purple w-48 h-48 bottom-40 -right-16 opacity-50"></div>
+    </div>
 
     <!-- TOP CLAY NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-white/80 shadow-[0_10px_30px_-10px_rgba(108,92,231,0.08)]">
+    <header class="sticky top-0 z-40 w-full max-w-full bg-white/85 backdrop-blur-xl border-b border-white/80 shadow-[0_10px_30px_-10px_rgba(108,92,231,0.08)] overflow-hidden">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
                 
@@ -543,7 +550,7 @@
 
     <!-- SLIDE-OUT MOBILE DRAWER (Screen 8 from Reference Image 1) -->
     <div id="mobileDrawerBackdrop" class="fixed inset-0 bg-slate-900/60 z-50 hidden transition-opacity"></div>
-    <aside id="mobileDrawer" class="fixed inset-y-0 left-0 w-80 max-w-full bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <aside id="mobileDrawer" class="fixed inset-y-0 left-0 w-80 max-w-[calc(100%-2rem)] bg-white z-50 shadow-2xl transform -translate-x-full invisible transition-all duration-300 flex flex-col justify-between">
         <div class="p-5 border-b border-slate-100 flex items-center justify-between">
             <div class="flex items-center gap-2.5">
                 <img src="{{ asset('images/rcu-logo.png') }}" alt="RCU Hub Logo" class="w-10 h-10 object-contain rounded-xl shadow-xs">
@@ -669,12 +676,12 @@
     @endif
 
     <!-- MAIN BODY CONTENT -->
-    <main class="flex-1">
+    <main class="flex-1 w-full max-w-full min-w-0 overflow-x-hidden">
         @yield('content')
     </main>
 
     <!-- CLAYMORPHISM FOOTER -->
-    <footer class="relative mt-20 bg-gradient-to-b from-white/90 via-[#F7F5FE] to-[#EDE8FE] border-t border-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] shadow-[0_-15px_40px_-10px_rgba(108,92,231,0.09),0_2px_4px_rgba(255,255,255,0.9)_inset]">
+    <footer class="relative mt-20 w-full max-w-full overflow-hidden bg-gradient-to-b from-white/90 via-[#F7F5FE] to-[#EDE8FE] border-t border-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] shadow-[0_-15px_40px_-10px_rgba(108,92,231,0.09),0_2px_4px_rgba(255,255,255,0.9)_inset]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pb-12">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 mb-12">
                 <!-- Brand col (md:col-span-5) -->
@@ -749,7 +756,7 @@
     </footer>
 
     <!-- MOBILE BOTTOM NAVIGATION DOCK (Pixel-perfect Claymorphism dock) -->
-    <nav class="lg:hidden fixed bottom-3 inset-x-3 sm:inset-x-6 max-w-md mx-auto bg-white/90 backdrop-blur-2xl border border-white/90 z-40 py-2.5 px-3 grid grid-cols-4 rounded-full shadow-[0_15px_35px_-5px_rgba(108,92,231,0.22),0_1px_3px_rgba(255,255,255,0.95)_inset]">
+    <nav class="lg:hidden fixed bottom-3 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] max-w-md bg-white/90 backdrop-blur-2xl border border-white/90 z-40 py-2.5 px-3 grid grid-cols-4 rounded-full shadow-[0_15px_35px_-5px_rgba(108,92,231,0.22),0_1px_3px_rgba(255,255,255,0.95)_inset]">
         <a href="{{ route('home') }}" class="flex flex-col items-center gap-1 text-[11px] font-bold transition-all {{ request()->routeIs('home') ? 'text-[#6C5CE7] scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
             <i data-lucide="home" class="w-5 h-5 stroke-[2.2]"></i>
             <span class="truncate">Home</span>
@@ -786,10 +793,10 @@
         function toggleDrawer(show) {
             if (show) {
                 mobileDrawerBackdrop.classList.remove('hidden');
-                mobileDrawer.classList.remove('-translate-x-full');
+                mobileDrawer.classList.remove('-translate-x-full', 'invisible');
             } else {
                 mobileDrawerBackdrop.classList.add('hidden');
-                mobileDrawer.classList.add('-translate-x-full');
+                mobileDrawer.classList.add('-translate-x-full', 'invisible');
             }
         }
 

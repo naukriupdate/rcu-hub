@@ -3,7 +3,7 @@
 @section('title', 'RCU Student Resource Hub — Study Smarter. Find Everything You Need')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10 min-w-0 overflow-x-hidden">
 
     <!-- =========================================================================
          1. HERO SECTION (Claymorphism: Desktop Image 1 & Mobile Image 2)
@@ -67,12 +67,12 @@
             <div class="lg:col-span-5 flex items-center justify-center relative">
                 
                 <!-- 3D Clay Stack Illustration Container -->
-                <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+                <div class="relative w-full max-w-md aspect-square flex items-center justify-center overflow-hidden sm:overflow-visible">
                     
                     <!-- Floating Background Orbs -->
                     <div class="absolute -top-4 right-10 w-12 h-12 rounded-full bg-gradient-to-br from-[#FFEAA7] to-[#FDCB6E] shadow-[0_8px_16px_rgba(253,203,110,0.4),0_2px_4px_#FFF_inset,0_-3px_6px_rgba(0,0,0,0.15)_inset] animate-bounce duration-1000"></div>
                     <div class="absolute bottom-6 left-6 w-10 h-10 rounded-full bg-gradient-to-br from-[#A8F5E1] to-[#00B894] shadow-[0_8px_16px_rgba(0,184,148,0.35),0_2px_4px_#FFF_inset,0_-3px_6px_rgba(0,0,0,0.15)_inset]"></div>
-                    <div class="absolute top-1/2 -right-4 w-8 h-8 rounded-full bg-gradient-to-br from-[#D6CEFD] to-[#6C5CE7] shadow-[0_6px_12px_rgba(108,92,231,0.35),0_2px_4px_#FFF_inset]"></div>
+                    <div class="absolute top-1/2 right-1 sm:-right-4 w-8 h-8 rounded-full bg-gradient-to-br from-[#D6CEFD] to-[#6C5CE7] shadow-[0_6px_12px_rgba(108,92,231,0.35),0_2px_4px_#FFF_inset]"></div>
 
                     <!-- SVG 3D Clay Art: Laptop, Books, Graduation Cap, Notepad -->
                     <svg viewBox="0 0 500 450" class="w-full h-auto drop-shadow-[0_25px_35px_rgba(108,92,231,0.22)] select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -477,27 +477,27 @@
     <!-- =========================================================================
          5. PLATFORM METRICS STATS BAR (Claymorphism Style)
          ========================================================================= -->
-    <div class="clay-card p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div class="grid grid-cols-3 gap-6 sm:gap-12 w-full md:w-auto text-center sm:text-left">
+    <div class="clay-card p-5 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 w-full max-w-full overflow-hidden">
+        <div class="grid grid-cols-3 gap-3 sm:gap-12 w-full md:w-auto text-center sm:text-left">
             
-            <div class="space-y-1">
-                <span class="block font-black text-2xl sm:text-3xl text-slate-900">{{ number_format($totalResources) }}+</span>
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Resources</span>
+            <div class="space-y-1 min-w-0">
+                <span class="block font-black text-xl sm:text-3xl text-slate-900 truncate">{{ number_format($totalResources) }}+</span>
+                <span class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider truncate block">Resources</span>
             </div>
 
-            <div class="space-y-1">
-                <span class="block font-black text-2xl sm:text-3xl text-[#6C5CE7]">{{ number_format($totalUsers) }}+</span>
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Registered Users</span>
+            <div class="space-y-1 min-w-0">
+                <span class="block font-black text-xl sm:text-3xl text-[#6C5CE7] truncate">{{ number_format($totalUsers) }}+</span>
+                <span class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider truncate block">Users</span>
             </div>
 
-            <div class="space-y-1">
-                <span class="block font-black text-2xl sm:text-3xl text-[#00B894]">{{ number_format($totalDownloads) }}+</span>
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Downloads</span>
+            <div class="space-y-1 min-w-0">
+                <span class="block font-black text-xl sm:text-3xl text-[#00B894] truncate">{{ number_format($totalDownloads) }}+</span>
+                <span class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider truncate block">Downloads</span>
             </div>
 
         </div>
 
-        <div class="font-handwriting text-[#A29BFE] text-2xl tracking-wider select-none shrink-0 text-center md:text-right">
+        <div class="font-handwriting text-[#A29BFE] text-xl sm:text-2xl tracking-wider select-none shrink-0 text-center md:text-right">
             Together for a Better Tomorrow
         </div>
     </div>
