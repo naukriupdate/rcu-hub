@@ -6,47 +6,47 @@
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
     
-    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
-        <a href="{{ route('notices.index') }}" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900">
+    <div class="flex items-center justify-between pb-3 border-b border-purple-100">
+        <a href="{{ route('notices.index') }}" class="flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-[#6C5CE7] transition-colors">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>All Notices</span>
         </a>
 
-        <a href="{{ $notice->original_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:underline">
+        <a href="{{ $notice->original_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#6C5CE7] hover:underline">
             <span>View on Official RCU Portal</span>
             <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
         </a>
     </div>
 
-    <!-- Main Notice Card -->
-    <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-2xs space-y-6">
+    <!-- Main Notice Card (Clay Style) -->
+    <div class="clay-card p-6 sm:p-10 space-y-6">
         
         <!-- Header -->
         <div class="space-y-3">
             <div class="flex items-center gap-2 flex-wrap">
-                <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
+                <span class="clay-chip text-xs font-black">
                     Official RCU Circular
                 </span>
-                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">
+                <span class="px-3 py-1 rounded-full bg-purple-50 text-[#6C5CE7] text-xs font-bold">
                     {{ $notice->category }}
                 </span>
-                <span class="text-xs text-slate-400">
+                <span class="text-xs text-slate-400 font-medium">
                     Published {{ $notice->published_at ? $notice->published_at->format('d M Y, h:i A') : 'Recently' }}
                 </span>
             </div>
 
-            <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-snug">
                 {{ $notice->title }}
             </h1>
         </div>
 
         <!-- Official Disclaimer Callout -->
-        <div class="p-3.5 bg-blue-50/60 rounded-xl border border-blue-100 flex items-center justify-between gap-3 text-xs text-blue-900">
-            <div class="flex items-center gap-2.5">
-                <i data-lucide="info" class="w-4 h-4 text-blue-600 shrink-0"></i>
+        <div class="p-4 bg-gradient-to-r from-purple-50/80 to-indigo-50/80 rounded-2xl border border-purple-100 flex items-center justify-between gap-3 text-xs text-slate-800">
+            <div class="flex items-center gap-2.5 font-medium">
+                <i data-lucide="info" class="w-4 h-4 text-[#6C5CE7] shrink-0"></i>
                 <span>This notice is synchronized from the official RCU website.</span>
             </div>
-            <a href="{{ $notice->original_url }}" target="_blank" rel="noopener" class="shrink-0 font-bold underline hover:text-blue-700">
+            <a href="{{ $notice->original_url }}" target="_blank" rel="noopener" class="shrink-0 font-black text-[#6C5CE7] underline hover:text-[#5641E5]">
                 Verify Source
             </a>
         </div>
@@ -57,7 +57,7 @@
         </div>
 
         <!-- External Link Trigger -->
-        <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="pt-6 border-t border-purple-50 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p class="text-xs text-slate-400">
                 Last synchronized: {{ $notice->last_synced_at ? $notice->last_synced_at->diffForHumans() : 'Just now' }}
             </p>

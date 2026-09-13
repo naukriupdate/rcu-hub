@@ -30,7 +30,7 @@
     <!-- Alpine.js for lightweight UI interactivity -->
     <script defer src="https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js"></script>
 
-    <!-- Tailwind CSS with Modern #487FFF Inter Theme Config -->
+    <!-- Tailwind CSS with Claymorphism Theme Config -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,95 +42,43 @@
                         handwriting: ['"Caveat"', 'cursive'],
                     },
                     colors: {
-                        /* Modern Theme Palette */
-                        blue: {
-                            50:  '#E4F1FF',
-                            100: '#BFDCFF',
-                            200: '#95C7FF',
-                            300: '#6BB1FF',
-                            400: '#519FFF',
-                            500: '#458EFF',
-                            600: '#487FFF', // Main primary: #487FFF
-                            700: '#486CEA',
-                            800: '#4759D6',
-                            900: '#4536B6',
-                            950: '#1E1B4B',
-                        },
-                        indigo: {
-                            50:  '#E4F1FF',
-                            100: '#BFDCFF',
-                            500: '#487FFF',
-                            600: '#486CEA',
-                            700: '#4759D6',
-                            800: '#4536B6',
-                            900: '#3A28A8',
-                            950: '#1E1B4B',
-                        },
-                        brand: {
-                            50:  '#E4F1FF',
-                            100: '#BFDCFF',
-                            200: '#95C7FF',
-                            300: '#6BB1FF',
-                            400: '#519FFF',
-                            500: '#458EFF',
-                            600: '#487FFF',
-                            700: '#486CEA',
-                            800: '#4759D6',
-                            900: '#4536B6',
-                            950: '#1E1B4B',
-                        },
-                        slate: {
-                            50:  '#F5F6FA',
-                            100: '#ECF1F9',
-                            200: '#E6E6E6',
-                            300: '#CCCCCC',
-                            400: '#999999',
-                            500: '#808080',
-                            600: '#666666',
-                            700: '#4D4D4D',
-                            800: '#333333',
-                            900: '#1A1A1A',
-                            950: '#0D0D0D',
-                        },
-                        success: {
-                            50:  '#F0FDF4',
-                            100: '#DCFCE7',
-                            200: '#BBF7D0',
-                            500: '#22C55E',
-                            600: '#16A34A',
-                            700: '#15803D',
-                            900: '#14532D',
-                        },
-                        danger: {
-                            50:  '#FEF2F2',
-                            100: '#FEE2E2',
-                            200: '#FECACA',
-                            500: '#EF4444',
-                            600: '#DC2626',
-                            700: '#B91C1C',
-                            900: '#7F1D1D',
-                        },
-                        warning: {
-                            50:  '#FEFCE8',
-                            100: '#FEF9C3',
-                            200: '#FEF08A',
-                            500: '#FACC15',
-                            600: '#FF9F29',
-                            700: '#F39016',
-                            900: '#D77907',
-                        },
-                        purple: {
-                            50:  '#dab1fa',
-                            100: '#d39efc',
-                            600: '#8C01F9',
+                        clay: {
+                            bg: '#F5F3FF',
+                            canvas: '#FAF8FF',
+                            purple: '#6C5CE7',
+                            'purple-dark': '#5641E5',
+                            'purple-light': '#8C7CFF',
+                            lavender: '#E8E4FD',
+                            'lavender-light': '#F1EFFF',
+                            mint: '#00B894',
+                            'mint-light': '#E3FAF3',
+                            peach: '#FF7675',
+                            'peach-light': '#FFEFEF',
+                            coral: '#FD79A8',
+                            orange: '#FF9F43',
+                            'orange-light': '#FFF3E8',
+                            blue: '#0984E3',
+                            'blue-light': '#E4F2FD',
+                            yellow: '#FDCB6E',
+                            'yellow-light': '#FEF9E7',
+                            text: '#2D3436',
+                            muted: '#636E72',
+                            subtle: '#A29BFE'
                         }
                     },
+                    borderRadius: {
+                        '3xl': '1.75rem',
+                        '4xl': '2.25rem',
+                        '5xl': '2.75rem'
+                    },
                     boxShadow: {
-                        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-                        'sm': '0px 4px 12px 0px rgba(0, 0, 0, 0.06)',
-                        'md': '0px 4px 24px 0px rgba(0, 0, 0, 0.06)',
-                        'lg': '0px 8px 24px 0px rgba(0, 0, 0, 0.08)',
-                        'xl': '0 24px 24px 0 rgba(0, 0, 0, 0.1)',
+                        'clay-card': '0 20px 40px -15px rgba(108, 92, 231, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.9) inset, 0 -6px 12px -2px rgba(162, 155, 254, 0.12) inset, 0 10px 25px -5px rgba(0, 0, 0, 0.04)',
+                        'clay-card-hover': '0 25px 50px -12px rgba(108, 92, 231, 0.16), 0 0 0 1px rgba(255, 255, 255, 1) inset, 0 -8px 16px -2px rgba(162, 155, 254, 0.18) inset, 0 15px 30px -5px rgba(0, 0, 0, 0.06)',
+                        'clay-btn-primary': '0 10px 25px -5px rgba(108, 92, 231, 0.45), 0 2px 4px rgba(255, 255, 255, 0.4) inset, 0 -3px 6px rgba(0, 0, 0, 0.2) inset',
+                        'clay-btn-hover': '0 14px 30px -4px rgba(108, 92, 231, 0.55), 0 2px 4px rgba(255, 255, 255, 0.5) inset, 0 -4px 8px rgba(0, 0, 0, 0.25) inset',
+                        'clay-input': '0 3px 8px rgba(108, 92, 231, 0.06) inset, 0 1px 2px rgba(0, 0, 0, 0.04) inset, 0 8px 20px rgba(108, 92, 231, 0.04)',
+                        'clay-bubble': '0 12px 24px -6px rgba(108, 92, 231, 0.22), 0 -4px 8px rgba(0, 0, 0, 0.08) inset, 0 3px 6px rgba(255, 255, 255, 0.6) inset',
+                        'clay-float': '0 25px 50px -12px rgba(108, 92, 231, 0.25)'
                     }
                 }
             }
@@ -138,139 +86,453 @@
     </script>
     <style>
         [x-cloak] { display: none !important; }
+        
+        /* Claymorphism Base Styling */
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: #4D4D4D;
-            background-color: #F5F6FA;
+            color: #2D3436;
+            background: linear-gradient(135deg, #F8F6FF 0%, #F1EEFD 50%, #F5F2FF 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            color: #1A1A1A;
+
+        /* Claymorphism Card Standard */
+        .clay-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            border-radius: 1.75rem;
+            box-shadow: 
+                0 20px 40px -15px rgba(108, 92, 231, 0.08),
+                0 8px 18px -6px rgba(0, 0, 0, 0.03),
+                0 2px 4px rgba(255, 255, 255, 0.95) inset,
+                0 -4px 10px rgba(162, 155, 254, 0.12) inset;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        /* Custom Modern Scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #F5F6FA; }
-        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 50px; }
-        ::-webkit-scrollbar-thumb:hover { background: #487FFF; }
-        /* Smooth transitions */
-        a, button { transition: all 0.2s linear; }
+
+        .clay-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 26px 48px -12px rgba(108, 92, 231, 0.14),
+                0 12px 24px -6px rgba(0, 0, 0, 0.04),
+                0 2px 6px rgba(255, 255, 255, 1) inset,
+                0 -5px 12px rgba(162, 155, 254, 0.16) inset;
+        }
+
+        /* Claymorphism Pastel Variations matching References */
+        .clay-card-purple {
+            background: linear-gradient(135deg, #FAF8FF 0%, #EFEAFF 100%);
+            border: 1.5px solid #FFFFFF;
+            border-radius: 1.75rem;
+            box-shadow: 
+                0 18px 36px -12px rgba(108, 92, 231, 0.15),
+                0 3px 6px rgba(255, 255, 255, 0.9) inset,
+                0 -6px 12px rgba(140, 124, 255, 0.15) inset;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .clay-card-purple:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 44px -10px rgba(108, 92, 231, 0.22), 0 3px 6px #FFF inset, 0 -8px 14px rgba(140, 124, 255, 0.2) inset;
+        }
+
+        .clay-card-mint {
+            background: linear-gradient(135deg, #F3FDF9 0%, #E2F9F0 100%);
+            border: 1.5px solid #FFFFFF;
+            border-radius: 1.75rem;
+            box-shadow: 
+                0 18px 36px -12px rgba(0, 184, 148, 0.16),
+                0 3px 6px rgba(255, 255, 255, 0.9) inset,
+                0 -6px 12px rgba(0, 184, 148, 0.14) inset;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .clay-card-mint:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 44px -10px rgba(0, 184, 148, 0.22), 0 3px 6px #FFF inset, 0 -8px 14px rgba(0, 184, 148, 0.18) inset;
+        }
+
+        .clay-card-peach {
+            background: linear-gradient(135deg, #FFF8F6 0%, #FFEBE6 100%);
+            border: 1.5px solid #FFFFFF;
+            border-radius: 1.75rem;
+            box-shadow: 
+                0 18px 36px -12px rgba(255, 118, 117, 0.16),
+                0 3px 6px rgba(255, 255, 255, 0.9) inset,
+                0 -6px 12px rgba(255, 118, 117, 0.14) inset;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .clay-card-peach:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 44px -10px rgba(255, 118, 117, 0.24), 0 3px 6px #FFF inset, 0 -8px 14px rgba(255, 118, 117, 0.18) inset;
+        }
+
+        .clay-card-blue {
+            background: linear-gradient(135deg, #F5FAFF 0%, #E3F1FD 100%);
+            border: 1.5px solid #FFFFFF;
+            border-radius: 1.75rem;
+            box-shadow: 
+                0 18px 36px -12px rgba(9, 132, 227, 0.15),
+                0 3px 6px rgba(255, 255, 255, 0.9) inset,
+                0 -6px 12px rgba(9, 132, 227, 0.13) inset;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .clay-card-blue:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 44px -10px rgba(9, 132, 227, 0.22), 0 3px 6px #FFF inset, 0 -8px 14px rgba(9, 132, 227, 0.18) inset;
+        }
+
+        /* Clay Bubble Icons (Like the 3D rounded icons in reference) */
+        .clay-bubble {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.25rem;
+            box-shadow: 
+                0 10px 20px -4px rgba(108, 92, 231, 0.25),
+                0 3px 6px rgba(255, 255, 255, 0.7) inset,
+                0 -4px 8px rgba(0, 0, 0, 0.15) inset;
+            transition: transform 0.25s ease;
+        }
+        .clay-bubble:hover {
+            transform: scale(1.06);
+        }
+
+        .clay-bubble-purple {
+            background: linear-gradient(135deg, #9C88FF 0%, #6C5CE7 100%);
+            box-shadow: 0 10px 20px -4px rgba(108, 92, 231, 0.35), 0 3px 6px rgba(255, 255, 255, 0.6) inset, 0 -4px 8px rgba(0, 0, 0, 0.2) inset;
+        }
+        .clay-bubble-mint {
+            background: linear-gradient(135deg, #55EFC4 0%, #00B894 100%);
+            box-shadow: 0 10px 20px -4px rgba(0, 184, 148, 0.35), 0 3px 6px rgba(255, 255, 255, 0.6) inset, 0 -4px 8px rgba(0, 0, 0, 0.2) inset;
+        }
+        .clay-bubble-peach {
+            background: linear-gradient(135deg, #FF9F89 0%, #FF7675 100%);
+            box-shadow: 0 10px 20px -4px rgba(255, 118, 117, 0.35), 0 3px 6px rgba(255, 255, 255, 0.6) inset, 0 -4px 8px rgba(0, 0, 0, 0.2) inset;
+        }
+        .clay-bubble-blue {
+            background: linear-gradient(135deg, #74B9FF 0%, #0984E3 100%);
+            box-shadow: 0 10px 20px -4px rgba(9, 132, 227, 0.35), 0 3px 6px rgba(255, 255, 255, 0.6) inset, 0 -4px 8px rgba(0, 0, 0, 0.2) inset;
+        }
+
+        /* Clay Buttons */
+        .clay-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+        .clay-btn:active {
+            transform: scale(0.97) translateY(1px);
+        }
+
+        .clay-btn-primary {
+            background: linear-gradient(135deg, #7C4DFF 0%, #6C5CE7 60%, #5641E5 100%);
+            color: #FFFFFF;
+            box-shadow: 
+                0 10px 22px -4px rgba(108, 92, 231, 0.45),
+                0 2px 4px rgba(255, 255, 255, 0.4) inset,
+                0 -3px 6px rgba(0, 0, 0, 0.22) inset;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .clay-btn-primary:hover {
+            box-shadow: 
+                0 14px 28px -4px rgba(108, 92, 231, 0.55),
+                0 2px 4px rgba(255, 255, 255, 0.5) inset,
+                0 -4px 8px rgba(0, 0, 0, 0.25) inset;
+            transform: translateY(-2px);
+        }
+
+        .clay-btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #6C5CE7;
+            border: 1.5px solid #EAE6FD;
+            box-shadow: 
+                0 8px 20px -6px rgba(108, 92, 231, 0.12),
+                0 2px 4px rgba(255, 255, 255, 0.9) inset,
+                0 -2px 5px rgba(162, 155, 254, 0.15) inset;
+        }
+        .clay-btn-secondary:hover {
+            background: #FFFFFF;
+            color: #5641E5;
+            border-color: #D6CEFD;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -5px rgba(108, 92, 231, 0.18);
+        }
+
+        /* Action Arrow Circle in Cards */
+        .clay-arrow-btn {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.85);
+            color: #6C5CE7;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 4px 10px rgba(108, 92, 231, 0.15),
+                0 1px 2px rgba(255, 255, 255, 0.9) inset,
+                0 -2px 4px rgba(162, 155, 254, 0.2) inset;
+            transition: all 0.2s ease;
+        }
+        .clay-arrow-btn:hover {
+            transform: scale(1.1) translateX(2px);
+            background: #6C5CE7;
+            color: #FFFFFF;
+        }
+
+        /* Clay Inputs */
+        .clay-input {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1.5px solid #EAE6FD;
+            border-radius: 9999px;
+            color: #2D3436;
+            box-shadow: 
+                0 4px 12px rgba(108, 92, 231, 0.05) inset,
+                0 1px 3px rgba(0, 0, 0, 0.02) inset,
+                0 8px 24px rgba(108, 92, 231, 0.04);
+            transition: all 0.25s ease;
+        }
+        .clay-input:focus {
+            outline: none;
+            background: #FFFFFF;
+            border-color: #7C4DFF;
+            box-shadow: 
+                0 0 0 4px rgba(108, 92, 231, 0.15),
+                0 3px 8px rgba(108, 92, 231, 0.06) inset;
+        }
+
+        /* Clay Chips / Tags */
+        .clay-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #EDE9FE;
+            color: #6C5CE7;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 2px 5px rgba(108, 92, 231, 0.08),
+                0 1px 2px rgba(255, 255, 255, 0.9) inset;
+            transition: all 0.2s ease;
+        }
+        .clay-chip:hover {
+            background: #6C5CE7;
+            color: #FFFFFF;
+            transform: translateY(-1px);
+        }
+
+        /* Clay Badges */
+        .clay-badge-new {
+            background: #FFE8E8;
+            color: #E84118;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.6875rem;
+            box-shadow: 0 1px 3px rgba(232, 65, 24, 0.12) inset;
+        }
+        .clay-badge-update {
+            background: #E8F4FD;
+            color: #0984E3;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.6875rem;
+            box-shadow: 0 1px 3px rgba(9, 132, 227, 0.12) inset;
+        }
+        .clay-badge-info {
+            background: #E6FAF3;
+            color: #00B894;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.6875rem;
+            box-shadow: 0 1px 3px rgba(0, 184, 148, 0.12) inset;
+        }
+
+        /* 3D Floating Blobs Background */
+        .clay-blob-purple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #D6CEFD 0%, #A29BFE 65%, #6C5CE7 100%);
+            box-shadow: 
+                0 30px 60px -15px rgba(108, 92, 231, 0.35),
+                0 -10px 20px rgba(0, 0, 0, 0.12) inset,
+                0 10px 20px rgba(255, 255, 255, 0.5) inset;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBlob 14s ease-in-out infinite alternate;
+        }
+
+        .clay-blob-mint {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #A8F5E1 0%, #55EFC4 65%, #00B894 100%);
+            box-shadow: 
+                0 30px 60px -15px rgba(0, 184, 148, 0.3),
+                0 -10px 20px rgba(0, 0, 0, 0.1) inset,
+                0 10px 20px rgba(255, 255, 255, 0.5) inset;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBlob 18s ease-in-out infinite alternate-reverse;
+        }
+
+        .clay-blob-yellow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #FFEAA7 0%, #FDCB6E 65%, #E17055 100%);
+            box-shadow: 
+                0 25px 50px -15px rgba(253, 203, 110, 0.35),
+                0 -8px 16px rgba(0, 0, 0, 0.1) inset,
+                0 8px 16px rgba(255, 255, 255, 0.5) inset;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBlob 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-18px) rotate(4deg) scale(1.04); }
+            100% { transform: translateY(12px) rotate(-3deg) scale(0.98); }
+        }
+
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            .clay-blob-purple, .clay-blob-mint, .clay-blob-yellow, .animate-float {
+                animation: none !important;
+            }
+            .clay-card, .clay-btn, .clay-bubble {
+                transition: none !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #F4F2FC; }
+        ::-webkit-scrollbar-thumb { background: #C5BAF7; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6C5CE7; }
     </style>
     @stack('styles')
 </head>
-<body class="flex flex-col min-h-full text-[#4D4D4D] bg-[#F5F6FA] antialiased selection:bg-[#487FFF] selection:text-white pb-16 lg:pb-0">
+<body class="flex flex-col min-h-full text-clay-text antialiased selection:bg-[#6C5CE7] selection:text-white pb-20 lg:pb-0">
 
-    <!-- TOP DESKTOP & MOBILE HEADER -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-200/80 shadow-xs">
+    <!-- FLOATING BACKGROUND CLAY BLOBS (Matches the reference 3D environment) -->
+    <div class="clay-blob-purple w-40 h-40 -top-10 -left-12 opacity-60"></div>
+    <div class="clay-blob-mint w-32 h-32 top-80 -right-10 opacity-55"></div>
+    <div class="clay-blob-yellow w-24 h-24 top-[48rem] -left-8 opacity-50"></div>
+    <div class="clay-blob-purple w-48 h-48 bottom-40 -right-16 opacity-50"></div>
+
+    <!-- TOP CLAY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/80 shadow-[0_10px_30px_-10px_rgba(108,92,231,0.08)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
+            <div class="flex items-center justify-between h-20">
                 
-                <!-- Brand Logo -->
+                <!-- Brand Logo (Clay Style) -->
                 <div class="flex items-center gap-3">
-                    <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 -ml-2 text-slate-600 hover:text-blue-600 focus:outline-none">
+                    <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 -ml-2 text-clay-muted hover:text-clay-purple focus:outline-none" aria-label="Open menu">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
-                    <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-sm shadow-blue-500/20 group-hover:scale-105 transition-transform">
-                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    <a href="{{ route('home') }}" class="flex items-center gap-3 group">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#8C7CFF] via-[#6C5CE7] to-[#5641E5] flex items-center justify-center text-white shadow-[0_10px_20px_-4px_rgba(108,92,231,0.45),0_2px_4px_rgba(255,255,255,0.6)_inset,0_-3px_6px_rgba(0,0,0,0.2)_inset] group-hover:scale-105 transition-transform">
+                            <i data-lucide="graduation-cap" class="w-7 h-7"></i>
                         </div>
                         <div>
                             <div class="flex items-center gap-1.5">
-                                <span class="font-extrabold text-xl text-slate-900 tracking-tight">RCU</span>
-                                <span class="text-sm font-semibold text-slate-600">Student Resource Hub</span>
+                                <span class="font-extrabold text-2xl text-slate-900 tracking-tight">RCU</span>
+                                <span class="font-extrabold text-2xl text-[#6C5CE7] tracking-tight">Hub</span>
                             </div>
-                            <p class="text-[10px] tracking-wider text-slate-400 font-medium hidden sm:block">Learn • Share • Grow</p>
+                            <p class="text-[11px] tracking-wider text-[#A29BFE] font-bold">Learn • Grow • Succeed</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Desktop Top Nav -->
-                <nav class="hidden lg:flex items-center gap-1">
-                    <a href="{{ route('home') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('home') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
+                <nav class="hidden lg:flex items-center gap-1.5 bg-[#F4F1FD]/80 p-1.5 rounded-full border border-white/90 shadow-[0_2px_6px_rgba(108,92,231,0.06)_inset]">
+                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-full text-sm font-bold transition-all {{ request()->routeIs('home') ? 'bg-[#6C5CE7] text-white shadow-[0_6px_14px_rgba(108,92,231,0.35),0_2px_4px_rgba(255,255,255,0.4)_inset]' : 'text-slate-600 hover:text-[#6C5CE7] hover:bg-white/80' }}">
                         Home
                     </a>
-                    <a href="{{ route('notices.index') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('notices.*') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
-                        Notices
-                    </a>
-                    <a href="{{ route('resources.index') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('resources.*') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
+                    <a href="{{ route('resources.index') }}" class="px-4 py-2 rounded-full text-sm font-semibold transition-all {{ request()->routeIs('resources.*') ? 'bg-[#6C5CE7] text-white shadow-[0_6px_14px_rgba(108,92,231,0.35)]' : 'text-slate-600 hover:text-[#6C5CE7] hover:bg-white/80' }}">
                         Resources
                     </a>
-                    <a href="{{ route('courses.index') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('courses.*') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
+                    <a href="{{ route('courses.index') }}" class="px-4 py-2 rounded-full text-sm font-semibold transition-all {{ request()->routeIs('courses.*') ? 'bg-[#6C5CE7] text-white shadow-[0_6px_14px_rgba(108,92,231,0.35)]' : 'text-slate-600 hover:text-[#6C5CE7] hover:bg-white/80' }}">
                         Courses
                     </a>
-                    <a href="{{ route('upload.create') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('upload.*') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
-                        Upload
+                    <a href="{{ route('notices.index') }}" class="px-4 py-2 rounded-full text-sm font-semibold transition-all {{ request()->routeIs('notices.*') ? 'bg-[#6C5CE7] text-white shadow-[0_6px_14px_rgba(108,92,231,0.35)]' : 'text-slate-600 hover:text-[#6C5CE7] hover:bg-white/80' }}">
+                        Notices
                     </a>
-                    <a href="{{ route('links.index') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('links.*') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
-                        Important Links
-                    </a>
-                    <a href="{{ route('about') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('about') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
+                    <a href="{{ route('about') }}" class="px-4 py-2 rounded-full text-sm font-semibold transition-all {{ request()->routeIs('about') ? 'bg-[#6C5CE7] text-white shadow-[0_6px_14px_rgba(108,92,231,0.35)]' : 'text-slate-600 hover:text-[#6C5CE7] hover:bg-white/80' }}">
                         About
-                    </a>
-                    <a href="{{ route('contact') }}" class="px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
-                        Contact
                     </a>
                 </nav>
 
-                <!-- Right Nav Elements: Search icon, Notifications, User Menu / Login -->
-                <div class="flex items-center gap-2.5">
-                    <a href="{{ route('resources.index') }}" class="p-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 rounded-lg transition-colors" title="Search resources">
-                        <i data-lucide="search" class="w-5 h-5"></i>
+                <!-- Right Nav Elements: Search, Login / Register, User Menu -->
+                <div class="flex items-center gap-3">
+                    <a href="{{ route('resources.index') }}" class="w-10 h-10 rounded-full bg-white/90 border border-purple-100 flex items-center justify-center text-slate-600 hover:text-[#6C5CE7] hover:bg-white shadow-[0_4px_10px_rgba(108,92,231,0.08)] transition-all" title="Search resources">
+                        <i data-lucide="search" class="w-4 h-4"></i>
                     </a>
 
                     @auth
                         @if(auth()->user()->isAdmin())
-                            <a href="{{ route('admin.dashboard') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-lg transition-colors">
-                                <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                            <a href="{{ route('admin.dashboard') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-amber-800 bg-amber-100/80 hover:bg-amber-100 border border-amber-200 rounded-full shadow-xs transition-colors">
+                                <i data-lucide="shield" class="w-3.5 h-3.5 text-amber-700"></i>
                                 Admin Panel
                             </a>
                         @endif
 
                         <!-- User Profile Dropdown -->
                         <div class="relative group">
-                            <button type="button" class="flex items-center gap-2 p-1.5 rounded-full hover:bg-slate-100 text-slate-700 transition-colors focus:outline-none">
-                                <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                            <button type="button" class="flex items-center gap-2 p-1 rounded-full bg-white/90 border border-purple-100 text-slate-700 hover:shadow-md transition-all focus:outline-none">
+                                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xs shadow-xs">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
                                 </div>
-                                <span class="hidden md:inline text-sm font-medium text-slate-800">{{ auth()->user()->name }}</span>
-                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 hidden md:inline"></i>
+                                <span class="hidden md:inline text-sm font-bold text-slate-800 pr-1">{{ auth()->user()->name }}</span>
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 hidden md:inline pr-2"></i>
                             </button>
-                            <div class="absolute right-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-2 hidden group-hover:block hover:block z-50">
-                                <div class="px-4 py-2 border-b border-slate-100">
-                                    <p class="text-xs text-slate-500">Signed in as</p>
-                                    <p class="text-sm font-semibold text-slate-900 truncate">{{ auth()->user()->email }}</p>
-                                    <span class="inline-block mt-1 px-2 py-0.5 text-[10px] font-semibold rounded-full {{ auth()->user()->isAdmin() ? 'bg-amber-100 text-amber-800' : (auth()->user()->isVerifiedTeacher() ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800') }}">
+                            <div class="absolute right-0 mt-2 w-60 bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_45px_-10px_rgba(108,92,231,0.25)] border border-purple-100 p-2 hidden group-hover:block hover:block z-50 animate__animated animate__fadeIn animate__faster">
+                                <div class="px-4 py-3 border-b border-slate-100">
+                                    <p class="text-xs text-slate-400 font-medium">Signed in as</p>
+                                    <p class="text-sm font-bold text-slate-900 truncate">{{ auth()->user()->email }}</p>
+                                    <span class="inline-block mt-1 px-2.5 py-0.5 text-[10px] font-bold rounded-full {{ auth()->user()->isAdmin() ? 'bg-amber-100 text-amber-800' : (auth()->user()->isVerifiedTeacher() ? 'bg-emerald-100 text-emerald-800' : 'bg-purple-100 text-purple-800') }}">
                                         {{ auth()->user()->isAdmin() ? 'Admin' : (auth()->user()->isVerifiedTeacher() ? '🏅 Verified Teacher' : ucfirst(auth()->user()->role)) }}
                                     </span>
                                 </div>
                                 @if(auth()->user()->isAdmin())
-                                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 px-4 py-2 text-sm text-blue-700 bg-blue-50/50 hover:bg-blue-100/50 font-bold border-b border-slate-100">
-                                        <i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> Admin Panel
+                                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#6C5CE7] bg-purple-50/60 hover:bg-purple-50 font-bold rounded-2xl my-1">
+                                        <i data-lucide="shield" class="w-4 h-4 text-[#6C5CE7]"></i> Admin Panel
                                     </a>
                                 @endif
-                                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
+                                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-2xl">
                                     <i data-lucide="user" class="w-4 h-4 text-slate-400"></i> My Account
                                 </a>
-                                <a href="{{ route('dashboard.my-uploads') }}" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
+                                <a href="{{ route('dashboard.my-uploads') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-2xl">
                                     <i data-lucide="folder" class="w-4 h-4 text-slate-400"></i> My Uploads
                                 </a>
-                                <a href="{{ route('upload.create') }}" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
+                                <a href="{{ route('upload.create') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-2xl">
                                     <i data-lucide="upload-cloud" class="w-4 h-4 text-slate-400"></i> Upload Resource
                                 </a>
                                 <div class="border-t border-slate-100 my-1"></div>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="w-full flex items-center gap-2.5 px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 font-medium">
+                                    <button type="submit" class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-rose-600 hover:bg-rose-50 font-semibold rounded-2xl">
                                         <i data-lucide="log-out" class="w-4 h-4 text-rose-500"></i> Sign out
                                     </button>
                                 </form>
                             </div>
                         </div>
                     @else
-                        <div class="flex items-center gap-2">
-                            <a href="{{ route('login') }}" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-100 rounded-lg transition-colors">
+                        <div class="flex items-center gap-2.5">
+                            <a href="{{ route('login') }}" class="px-5 py-2 text-sm font-bold text-slate-700 hover:text-[#6C5CE7] transition-colors">
                                 Login
                             </a>
-                            <a href="{{ route('register') }}" class="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-xs shadow-blue-500/20 transition-all">
+                            <a href="{{ route('register') }}" class="clay-btn clay-btn-primary px-6 py-2.5 text-sm font-bold">
                                 Register
                             </a>
                         </div>
@@ -469,28 +731,26 @@
         </div>
     </footer>
 
-    <!-- MOBILE BOTTOM NAVIGATION BAR (Fixed at bottom on mobile, matches Screen 1 from Reference Image 1) -->
-    <nav class="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 py-2 px-3 flex items-center justify-around shadow-lg">
-        <a href="{{ route('home') }}" class="flex flex-col items-center gap-1 text-xs {{ request()->routeIs('home') ? 'text-blue-600 font-semibold' : 'text-slate-500 hover:text-slate-900' }}">
-            <i data-lucide="home" class="w-5 h-5"></i>
+    <!-- MOBILE BOTTOM NAVIGATION DOCK (Pixel-perfect Claymorphism dock matching Mobile Reference) -->
+    <nav class="lg:hidden fixed bottom-3 inset-x-4 bg-white/90 backdrop-blur-2xl border border-white/90 z-40 py-2.5 px-6 flex items-center justify-between rounded-full shadow-[0_15px_35px_-5px_rgba(108,92,231,0.2),0_1px_3px_rgba(255,255,255,0.9)_inset]">
+        <a href="{{ route('home') }}" class="flex flex-col items-center gap-1 text-[11px] font-bold transition-all {{ request()->routeIs('home') ? 'text-[#6C5CE7] scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
+            <i data-lucide="home" class="w-5 h-5 stroke-[2.2]"></i>
             <span>Home</span>
         </a>
-        <a href="{{ route('resources.index') }}" class="flex flex-col items-center gap-1 text-xs {{ request()->routeIs('resources.*') ? 'text-blue-600 font-semibold' : 'text-slate-500 hover:text-slate-900' }}">
-            <i data-lucide="book-open" class="w-5 h-5"></i>
+        <a href="{{ route('resources.index') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('resources.*') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
+            <i data-lucide="book-open" class="w-5 h-5 stroke-[2.2]"></i>
             <span>Resources</span>
         </a>
-        <a href="{{ route('upload.create') }}" class="flex flex-col items-center gap-1 text-xs {{ request()->routeIs('upload.*') ? 'text-blue-600 font-semibold' : 'text-slate-500 hover:text-slate-900' }}">
-            <div class="w-9 h-9 -mt-3 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/30">
-                <i data-lucide="upload" class="w-5 h-5"></i>
-            </div>
-            <span>Upload</span>
+        <a href="{{ route('courses.index') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('courses.*') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
+            <i data-lucide="graduation-cap" class="w-5 h-5 stroke-[2.2]"></i>
+            <span>Courses</span>
         </a>
-        <a href="{{ route('notices.index') }}" class="flex flex-col items-center gap-1 text-xs {{ request()->routeIs('notices.*') ? 'text-blue-600 font-semibold' : 'text-slate-500 hover:text-slate-900' }}">
-            <i data-lucide="bell" class="w-5 h-5"></i>
+        <a href="{{ route('notices.index') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('notices.*') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
+            <i data-lucide="bell" class="w-5 h-5 stroke-[2.2]"></i>
             <span>Notices</span>
         </a>
-        <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="flex flex-col items-center gap-1 text-xs {{ request()->routeIs('dashboard*') || request()->routeIs('login') ? 'text-blue-600 font-semibold' : 'text-slate-500 hover:text-slate-900' }}">
-            <i data-lucide="user" class="w-5 h-5"></i>
+        <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('dashboard*') || request()->routeIs('login') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
+            <i data-lucide="user" class="w-5 h-5 stroke-[2.2]"></i>
             <span>{{ auth()->check() ? 'Profile' : 'Login' }}</span>
         </a>
     </nav>

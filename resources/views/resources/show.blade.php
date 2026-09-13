@@ -73,30 +73,31 @@
         </div>
     @endif
 
-    <!-- MAIN RESOURCE DETAILS CARD (Screen 4 from Reference Image 1) -->
-    <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-2xs space-y-6">
+    <!-- MAIN RESOURCE DETAILS CARD (Claymorphism Style) -->
+    <div class="clay-card p-6 sm:p-8 space-y-6">
         
         <!-- Header Info -->
         <div class="flex items-start gap-4">
-            <!-- Red PDF icon -->
-            <div class="w-14 h-14 rounded-2xl bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-xs">
-                <i data-lucide="file-text" class="w-7 h-7"></i>
+            <!-- Clay file bubble -->
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm
+                {{ $resource->file_type === 'pdf' ? 'clay-bubble-peach' : ($resource->resourceType->slug === 'syllabus' ? 'clay-bubble-mint' : 'clay-bubble-purple') }}">
+                <i data-lucide="{{ $resource->file_type === 'pdf' ? 'file-text' : ($resource->resourceType->slug === 'syllabus' ? 'book-open' : 'file') }}" class="w-7 h-7 text-white"></i>
             </div>
             <div>
                 <div class="flex items-center gap-2 flex-wrap">
-                    <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                    <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                         {{ $resource->title }}
                     </h1>
                     @if($resource->isVerifiedTeacherUpload())
-                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">
+                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
                             🏅 Verified Teacher
                         </span>
                     @endif
                 </div>
-                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
                     {{ $resource->program->code }} • Semester {{ $resource->semester->semester_number }} • {{ $resource->resourceType->name }}
                 </p>
-                <p class="text-xs text-slate-400 mt-0.5">
+                <p class="text-xs text-slate-400 mt-0.5 font-medium">
                     {{ $resource->created_at->format('d M Y') }} • {{ $resource->humanFileSize() }} • {{ number_format($resource->downloads_count) }} downloads
                 </p>
             </div>
@@ -104,41 +105,41 @@
 
         <!-- Description Paragraph -->
         @if($resource->description)
-            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50/80 p-4 rounded-xl border border-slate-100">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed bg-[#FAF8FF] p-4 rounded-2xl border border-purple-50">
                 {{ $resource->description }}
             </div>
         @endif
 
-        <!-- Metadata Key-Value Table (Exact layout from Screen 4) -->
-        <div class="border-t border-b border-slate-100 py-3 text-xs sm:text-sm">
-            <dl class="divide-y divide-slate-100">
+        <!-- Metadata Key-Value Table -->
+        <div class="border-t border-b border-purple-50 py-3 text-xs sm:text-sm">
+            <dl class="divide-y divide-purple-50/60">
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                    <dt class="font-medium text-slate-400">Course</dt>
-                    <dd class="col-span-2 font-semibold text-slate-900">: {{ $resource->program->name }} ({{ $resource->program->code }})</dd>
+                    <dt class="font-bold text-slate-400">Course</dt>
+                    <dd class="col-span-2 font-bold text-slate-800">: {{ $resource->program->name }} ({{ $resource->program->code }})</dd>
                 </div>
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                    <dt class="font-medium text-slate-400">Semester</dt>
-                    <dd class="col-span-2 font-semibold text-slate-900">: {{ $resource->semester->semester_number }}</dd>
+                    <dt class="font-bold text-slate-400">Semester</dt>
+                    <dd class="col-span-2 font-bold text-slate-800">: Semester {{ $resource->semester->semester_number }}</dd>
                 </div>
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                    <dt class="font-medium text-slate-400">Subject</dt>
-                    <dd class="col-span-2 font-semibold text-slate-900">: {{ $resource->subject->name }} ({{ $resource->subject->code ?: 'N/A' }})</dd>
+                    <dt class="font-bold text-slate-400">Subject</dt>
+                    <dd class="col-span-2 font-bold text-slate-800">: {{ $resource->subject->name }} ({{ $resource->subject->code ?: 'N/A' }})</dd>
                 </div>
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                    <dt class="font-medium text-slate-400">Type</dt>
-                    <dd class="col-span-2 font-semibold text-slate-900">: {{ $resource->resourceType->name }}</dd>
+                    <dt class="font-bold text-slate-400">Type</dt>
+                    <dd class="col-span-2 font-bold text-slate-800">: {{ $resource->resourceType->name }}</dd>
                 </div>
                 @if($resource->academic_year)
                     <div class="py-2.5 grid grid-cols-3 gap-4">
-                        <dt class="font-medium text-slate-400">Academic Year</dt>
-                        <dd class="col-span-2 font-semibold text-slate-900">: {{ $resource->academic_year }}</dd>
+                        <dt class="font-bold text-slate-400">Academic Year</dt>
+                        <dd class="col-span-2 font-bold text-slate-800">: {{ $resource->academic_year }}</dd>
                     </div>
                 @endif
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                    <dt class="font-medium text-slate-400">Uploaded by</dt>
-                    <dd class="col-span-2 font-semibold text-slate-900 flex items-center gap-1.5">
+                    <dt class="font-bold text-slate-400">Uploaded by</dt>
+                    <dd class="col-span-2 font-bold text-slate-800 flex items-center gap-1.5">
                         : {{ $resource->uploader_name }} 
-                        <span class="text-xs font-normal text-slate-500">({{ ucfirst($resource->uploader_type) }})</span>
+                        <span class="text-xs font-normal text-slate-400">({{ ucfirst($resource->uploader_type) }})</span>
                         @if($resource->isVerifiedTeacherUpload())
                             <span class="text-emerald-700 font-bold text-xs">🏅 Verified</span>
                         @endif
@@ -147,40 +148,42 @@
             </dl>
         </div>
 
-        <!-- Action Buttons from Screen 4: [View PDF] & [Download] -->
+        <!-- Action Buttons: [View PDF] & [Download] (Clay Buttons) -->
         <div class="space-y-3 pt-2">
             <a href="{{ route('resources.preview', $resource->id) }}" target="_blank" 
-               class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl shadow-xs shadow-blue-500/20 transition-all flex items-center justify-center gap-2">
+               class="clay-btn clay-btn-primary w-full py-3.5 text-sm font-bold">
                 <i data-lucide="eye" class="w-4 h-4"></i>
-                <span>View PDF</span>
+                <span>View Document</span>
             </a>
             
             <a href="{{ route('resources.download', $resource->id) }}" 
-               class="w-full py-3 px-4 bg-white hover:bg-slate-50 border border-blue-600 text-blue-600 font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
+               class="clay-btn clay-btn-secondary w-full py-3.5 text-sm font-bold">
                 <i data-lucide="download" class="w-4 h-4"></i>
-                <span>Download</span>
+                <span>Download File</span>
             </a>
         </div>
 
     </div>
 
-    <!-- RELATED RESOURCES (Screen 4 from Reference Image 1) -->
+    <!-- RELATED RESOURCES (Clay Style) -->
     <div class="mt-8 space-y-3">
-        <h2 class="font-bold text-slate-900 text-base">Related Resources</h2>
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-2 shadow-2xs divide-y divide-slate-100">
+        <h2 class="font-black text-slate-900 text-lg">Related Resources</h2>
+        <div class="clay-card p-3 divide-y divide-purple-50">
             @forelse($relatedResources as $rel)
                 <a href="{{ route('resources.show', ['program' => $rel->program->slug, 'semester' => $rel->semester->slug, 'subject' => $rel->subject->slug, 'slug' => $rel->slug]) }}" 
-                   class="p-3 flex items-center justify-between gap-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                   class="p-3.5 flex items-center justify-between gap-3 hover:bg-[#FAF8FF] rounded-2xl transition-colors group">
                     <div class="flex items-center gap-3 min-w-0">
-                        <div class="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0">
-                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <div class="w-10 h-10 rounded-2xl clay-bubble-purple flex items-center justify-center shrink-0">
+                            <i data-lucide="file-text" class="w-5 h-5 text-white"></i>
                         </div>
                         <div class="min-w-0">
-                            <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-600 truncate">{{ $rel->title }}</h4>
+                            <h4 class="text-sm font-bold text-slate-900 group-hover:text-[#6C5CE7] truncate transition-colors">{{ $rel->title }}</h4>
                             <p class="text-[11px] text-slate-400 truncate">{{ $rel->program->code }} • Sem {{ $rel->semester->semester_number }} • {{ $rel->resourceType->name }}</p>
                         </div>
                     </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-blue-600 shrink-0"></i>
+                    <div class="clay-arrow-btn shrink-0">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
                 </a>
             @empty
                 <div class="p-6 text-center text-xs text-slate-400">
