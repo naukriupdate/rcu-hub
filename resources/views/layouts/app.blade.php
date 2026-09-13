@@ -431,25 +431,20 @@
     <div class="clay-blob-purple w-48 h-48 bottom-40 -right-16 opacity-50"></div>
 
     <!-- TOP CLAY NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/80 shadow-[0_10px_30px_-10px_rgba(108,92,231,0.08)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+    <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-white/80 shadow-[0_10px_30px_-10px_rgba(108,92,231,0.08)]">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
                 
-                <!-- Brand Logo (Clay Style) -->
-                <div class="flex items-center gap-3">
-                    <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 -ml-2 text-clay-muted hover:text-clay-purple focus:outline-none" aria-label="Open menu">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                    <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#8C7CFF] via-[#6C5CE7] to-[#5641E5] flex items-center justify-center text-white shadow-[0_10px_20px_-4px_rgba(108,92,231,0.45),0_2px_4px_rgba(255,255,255,0.6)_inset,0_-3px_6px_rgba(0,0,0,0.2)_inset] group-hover:scale-105 transition-transform">
-                            <i data-lucide="graduation-cap" class="w-7 h-7"></i>
-                        </div>
+                <!-- Brand Logo (Clay Style with User Crest Image) -->
+                <div class="flex items-center shrink-0">
+                    <a href="{{ route('home') }}" class="flex items-center gap-2 sm:gap-3 group">
+                        <img src="{{ asset('images/rcu-logo.png') }}" alt="RCU Hub Logo" class="w-9 h-9 sm:w-11 sm:h-11 object-contain rounded-2xl shadow-[0_6px_14px_rgba(108,92,231,0.25)] group-hover:scale-105 transition-transform">
                         <div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="font-extrabold text-2xl text-slate-900 tracking-tight">RCU</span>
-                                <span class="font-extrabold text-2xl text-[#6C5CE7] tracking-tight">Hub</span>
+                            <div class="flex items-center gap-1">
+                                <span class="font-black text-lg sm:text-2xl text-slate-900 tracking-tight">RCU</span>
+                                <span class="font-black text-lg sm:text-2xl text-[#6C5CE7] tracking-tight">Hub</span>
                             </div>
-                            <p class="text-[11px] tracking-wider text-[#A29BFE] font-bold">Learn • Grow • Succeed</p>
+                            <p class="hidden sm:block text-[10px] tracking-wider text-[#A29BFE] font-bold uppercase">Learn • Grow • Succeed</p>
                         </div>
                     </a>
                 </div>
@@ -473,28 +468,25 @@
                     </a>
                 </nav>
 
-                <!-- Right Nav Elements: Search, Login / Register, User Menu -->
-                <div class="flex items-center gap-3">
-                    <a href="{{ route('resources.index') }}" class="w-10 h-10 rounded-full bg-white/90 border border-purple-100 flex items-center justify-center text-slate-600 hover:text-[#6C5CE7] hover:bg-white shadow-[0_4px_10px_rgba(108,92,231,0.08)] transition-all" title="Search resources">
-                        <i data-lucide="search" class="w-4 h-4"></i>
-                    </a>
+                <!-- Right Nav Elements: Login / Register, User Menu, Hamburger Menu -->
+                <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
 
                     @auth
                         @if(auth()->user()->isAdmin())
-                            <a href="{{ route('admin.dashboard') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-amber-800 bg-amber-100/80 hover:bg-amber-100 border border-amber-200 rounded-full shadow-xs transition-colors">
+                            <a href="{{ route('admin.dashboard') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-amber-800 bg-amber-100/80 hover:bg-amber-100 border border-amber-200 rounded-full shadow-xs transition-colors">
                                 <i data-lucide="shield" class="w-3.5 h-3.5 text-amber-700"></i>
-                                Admin Panel
+                                <span class="hidden md:inline">Admin Panel</span>
                             </a>
                         @endif
 
                         <!-- User Profile Dropdown -->
                         <div class="relative group">
-                            <button type="button" class="flex items-center gap-2 p-1 rounded-full bg-white/90 border border-purple-100 text-slate-700 hover:shadow-md transition-all focus:outline-none">
-                                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                            <button type="button" class="flex items-center gap-1.5 p-1 sm:p-1.5 rounded-full bg-white/90 border border-purple-100 text-slate-700 hover:shadow-md transition-all focus:outline-none">
+                                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xs shadow-xs">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
                                 </div>
                                 <span class="hidden md:inline text-sm font-bold text-slate-800 pr-1">{{ auth()->user()->name }}</span>
-                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 hidden md:inline pr-2"></i>
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 hidden md:inline pr-1"></i>
                             </button>
                             <div class="absolute right-0 mt-2 w-60 bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_45px_-10px_rgba(108,92,231,0.25)] border border-purple-100 p-2 hidden group-hover:block hover:block z-50 animate__animated animate__fadeIn animate__faster">
                                 <div class="px-4 py-3 border-b border-slate-100">
@@ -528,15 +520,21 @@
                             </div>
                         </div>
                     @else
-                        <div class="flex items-center gap-2.5">
-                            <a href="{{ route('login') }}" class="px-5 py-2 text-sm font-bold text-slate-700 hover:text-[#6C5CE7] transition-colors">
+                        <!-- Guest Auth Buttons (Visible on Mobile & Desktop Header) -->
+                        <div class="flex items-center gap-1 sm:gap-2">
+                            <a href="{{ route('login') }}" class="px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#6C5CE7] transition-colors rounded-full hover:bg-purple-50/60">
                                 Login
                             </a>
-                            <a href="{{ route('register') }}" class="clay-btn clay-btn-primary px-6 py-2.5 text-sm font-bold">
+                            <a href="{{ route('register') }}" class="clay-btn clay-btn-primary px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold">
                                 Register
                             </a>
                         </div>
                     @endauth
+
+                    <!-- Mobile Hamburger Menu Button (lg:hidden) -->
+                    <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 hover:text-[#6C5CE7] hover:bg-purple-50 transition-colors focus:outline-none" aria-label="Open navigation menu">
+                        <i data-lucide="menu" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                    </button>
 
                 </div>
             </div>
@@ -548,12 +546,13 @@
     <aside id="mobileDrawer" class="fixed inset-y-0 left-0 w-80 max-w-full bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
         <div class="p-5 border-b border-slate-100 flex items-center justify-between">
             <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
-                    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-                </div>
+                <img src="{{ asset('images/rcu-logo.png') }}" alt="RCU Hub Logo" class="w-10 h-10 object-contain rounded-xl shadow-xs">
                 <div>
-                    <h2 class="font-bold text-slate-900 text-base">RCU</h2>
-                    <p class="text-[11px] text-slate-500">Student Resource Hub</p>
+                    <div class="flex items-center gap-1">
+                        <h2 class="font-black text-slate-900 text-base">RCU</h2>
+                        <span class="font-black text-[#6C5CE7] text-base">Hub</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 font-medium">Student Resource Hub</p>
                 </div>
             </div>
             <button id="closeMobileDrawerBtn" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg">
@@ -562,50 +561,44 @@
         </div>
 
         <div class="flex-1 overflow-y-auto p-4 space-y-1">
-            <a href="{{ route('home') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl {{ request()->routeIs('home') ? 'bg-blue-50 text-blue-600' : 'text-slate-700 hover:bg-slate-100' }}">
+            <a href="{{ route('home') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl {{ request()->routeIs('home') ? 'bg-purple-50 text-[#6C5CE7] font-bold' : 'text-slate-700 hover:bg-slate-100' }}">
                 <i data-lucide="home" class="w-4 h-4"></i> Home
             </a>
             @if(auth()->check() && auth()->user()->isAdmin())
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-bold rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
-                    <i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> Admin Panel
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-bold rounded-xl bg-amber-50 text-amber-800 border border-amber-200">
+                    <i data-lucide="shield" class="w-4 h-4 text-amber-700"></i> Admin Panel
                 </a>
             @endif
-            <a href="{{ route('notices.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl {{ request()->routeIs('notices.*') ? 'bg-blue-50 text-blue-600' : 'text-slate-700 hover:bg-slate-100' }}">
+            <a href="{{ route('resources.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl {{ request()->routeIs('resources.*') ? 'bg-purple-50 text-[#6C5CE7] font-bold' : 'text-slate-700 hover:bg-slate-100' }}">
+                <i data-lucide="book-open" class="w-4 h-4"></i> Resources
+            </a>
+            <a href="{{ route('courses.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl {{ request()->routeIs('courses.*') ? 'bg-purple-50 text-[#6C5CE7] font-bold' : 'text-slate-700 hover:bg-slate-100' }}">
+                <i data-lucide="graduation-cap" class="w-4 h-4"></i> Courses
+            </a>
+            <a href="{{ route('notices.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl {{ request()->routeIs('notices.*') ? 'bg-purple-50 text-[#6C5CE7] font-bold' : 'text-slate-700 hover:bg-slate-100' }}">
                 <i data-lucide="bell" class="w-4 h-4"></i> Notices
             </a>
             
             <!-- Collapsible Resources -->
-            <div>
-                <a href="{{ route('resources.index') }}" class="flex items-center justify-between px-3.5 py-2.5 text-sm font-medium rounded-xl text-slate-700 hover:bg-slate-100">
-                    <span class="flex items-center gap-3">
-                        <i data-lucide="book-open" class="w-4 h-4"></i> Resources
-                    </span>
-                    <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
-                </a>
-                <div class="pl-10 pr-3 py-1 space-y-1 text-xs text-slate-600">
-                    <a href="{{ route('resources.index', ['type' => 'notes']) }}" class="block py-1 hover:text-blue-600">• Notes</a>
-                    <a href="{{ route('resources.index', ['type' => 'pyq']) }}" class="block py-1 hover:text-blue-600">• Previous Year Papers</a>
-                    <a href="{{ route('resources.index', ['type' => 'question-banks']) }}" class="block py-1 hover:text-blue-600">• Question Banks</a>
-                    <a href="{{ route('resources.index', ['type' => 'syllabus']) }}" class="block py-1 hover:text-blue-600">• Syllabus</a>
-                    <a href="{{ route('resources.index', ['type' => 'assignments']) }}" class="block py-1 hover:text-blue-600">• Assignments</a>
+            <div class="pt-2">
+                <div class="px-3.5 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Quick Filters</div>
+                <div class="pl-4 pr-3 py-1 space-y-1 text-xs text-slate-600">
+                    <a href="{{ route('resources.index', ['type' => 'notes']) }}" class="flex items-center gap-2 py-1.5 hover:text-[#6C5CE7]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#6C5CE7]"></span> Notes
+                    </a>
+                    <a href="{{ route('resources.index', ['type' => 'pyq']) }}" class="flex items-center gap-2 py-1.5 hover:text-[#6C5CE7]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#00B894]"></span> Previous Year Papers
+                    </a>
+                    <a href="{{ route('resources.index', ['type' => 'question-banks']) }}" class="flex items-center gap-2 py-1.5 hover:text-[#6C5CE7]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#FF7675]"></span> Question Banks
+                    </a>
+                    <a href="{{ route('resources.index', ['type' => 'syllabus']) }}" class="flex items-center gap-2 py-1.5 hover:text-[#6C5CE7]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#0984E3]"></span> Syllabus
+                    </a>
                 </div>
             </div>
 
-            <!-- Collapsible Courses -->
-            <div>
-                <a href="{{ route('courses.index') }}" class="flex items-center justify-between px-3.5 py-2.5 text-sm font-medium rounded-xl text-slate-700 hover:bg-slate-100">
-                    <span class="flex items-center gap-3">
-                        <i data-lucide="layout-grid" class="w-4 h-4"></i> Courses
-                    </span>
-                    <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
-                </a>
-                <div class="pl-10 pr-3 py-1 space-y-1 text-xs text-slate-600">
-                    <a href="{{ route('resources.index', ['course' => 'bca']) }}" class="block py-1 hover:text-blue-600">• BCA</a>
-                    <a href="{{ route('resources.index', ['course' => 'bba']) }}" class="block py-1 hover:text-blue-600">• BBA</a>
-                    <a href="{{ route('resources.index', ['course' => 'ba']) }}" class="block py-1 hover:text-blue-600">• BA</a>
-                    <a href="{{ route('resources.index', ['course' => 'bsc']) }}" class="block py-1 hover:text-blue-600">• B.Sc</a>
-                </div>
-            </div>
+            <div class="border-t border-slate-100 my-2"></div>
 
             <a href="{{ route('upload.create') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl text-slate-700 hover:bg-slate-100">
                 <i data-lucide="upload-cloud" class="w-4 h-4"></i> Upload Resource
@@ -619,6 +612,17 @@
             <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-xl text-slate-700 hover:bg-slate-100">
                 <i data-lucide="phone" class="w-4 h-4"></i> Contact
             </a>
+
+            @guest
+                <div class="border-t border-slate-100 my-2 pt-2 px-3 space-y-2">
+                    <a href="{{ route('login') }}" class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
+                        <i data-lucide="log-in" class="w-4 h-4"></i> Login
+                    </a>
+                    <a href="{{ route('register') }}" class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold text-white bg-[#6C5CE7] hover:bg-[#5641E5] rounded-xl transition-colors shadow-sm">
+                        <i data-lucide="user-plus" class="w-4 h-4"></i> Register
+                    </a>
+                </div>
+            @endguest
         </div>
 
         <!-- Drawer Footer with Social Icons -->
@@ -637,7 +641,7 @@
     <!-- FLASH MESSAGES -->
     @if(session('success'))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-start gap-3 shadow-xs">
+            <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-start gap-3 shadow-xs">
                 <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
                 <div class="flex-1 text-sm font-medium">{{ session('success') }}</div>
             </div>
@@ -646,7 +650,7 @@
 
     @if(session('error') || $errors->any())
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-            <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 flex items-start gap-3 shadow-xs">
+            <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 flex items-start gap-3 shadow-xs">
                 <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-600 shrink-0 mt-0.5"></i>
                 <div class="flex-1 text-sm">
                     @if(session('error'))
@@ -669,89 +673,98 @@
         @yield('content')
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-white border-t border-slate-200 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <!-- Brand col -->
-                <div class="md:col-span-1 space-y-3">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
-                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+    <!-- CLAYMORPHISM FOOTER -->
+    <footer class="relative mt-20 bg-gradient-to-b from-white/90 via-[#F7F5FE] to-[#EDE8FE] border-t border-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] shadow-[0_-15px_40px_-10px_rgba(108,92,231,0.09),0_2px_4px_rgba(255,255,255,0.9)_inset]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 mb-12">
+                <!-- Brand col (md:col-span-5) -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="{{ asset('images/rcu-logo.png') }}" alt="RCU Hub Logo" class="w-12 h-12 object-contain rounded-2xl shadow-[0_6px_14px_rgba(108,92,231,0.25)]">
+                        <div>
+                            <div class="flex items-center gap-1">
+                                <span class="font-black text-2xl text-slate-900 tracking-tight">RCU</span>
+                                <span class="font-black text-2xl text-[#6C5CE7] tracking-tight">Hub</span>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#EDE9FE] text-[#6C5CE7] text-[10px] font-bold">
+                                <i data-lucide="sparkles" class="w-3 h-3 text-[#6C5CE7]"></i>
+                                Open Student Resource Community
+                            </span>
                         </div>
-                        <span class="font-bold text-lg text-slate-900">RCU Hub</span>
                     </div>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        An independent, open community platform built for Ramchandra Chandravanshi University (RCU) students and teachers to collaborate, discover study materials, and access latest notices.
+                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-md font-medium">
+                        An independent, open community platform built for Ramchandra Chandravanshi University (RCU) students and teachers to collaborate, discover verified study materials, question papers, and official notices.
                     </p>
+                    <div class="pt-2 flex flex-wrap items-center gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-white text-slate-600 font-semibold border border-purple-100 shadow-xs">🎓 By Students, For Students</span>
+                        <span class="px-3 py-1 rounded-full bg-white text-slate-600 font-semibold border border-purple-100 shadow-xs">⚡ Fast & Free</span>
+                    </div>
                 </div>
 
-                <!-- Academic -->
-                <div>
-                    <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Academic Programs</h3>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="{{ route('resources.index', ['course' => 'bca']) }}" class="hover:text-blue-600">BCA Notes & PYQs</a></li>
-                        <li><a href="{{ route('resources.index', ['course' => 'bba']) }}" class="hover:text-blue-600">BBA Resources</a></li>
-                        <li><a href="{{ route('resources.index', ['course' => 'ba']) }}" class="hover:text-blue-600">BA Materials</a></li>
-                        <li><a href="{{ route('resources.index', ['course' => 'bsc']) }}" class="hover:text-blue-600">B.Sc Question Papers</a></li>
+                <!-- Academic Programs (md:col-span-2) -->
+                <div class="md:col-span-2 space-y-3">
+                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Academic Programs</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
+                        <li><a href="{{ route('resources.index', ['course' => 'bca']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> BCA Notes & PYQs</a></li>
+                        <li><a href="{{ route('resources.index', ['course' => 'bba']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> BBA Resources</a></li>
+                        <li><a href="{{ route('resources.index', ['course' => 'ba']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> BA Materials</a></li>
+                        <li><a href="{{ route('resources.index', ['course' => 'bsc']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> B.Sc Question Papers</a></li>
                     </ul>
                 </div>
 
-                <!-- Official Portal Links -->
-                <div>
-                    <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Official Portals</h3>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="https://www.rcu.edu.in/" target="_blank" rel="noopener" class="hover:text-blue-600 flex items-center gap-1.5">RCU Official Website <i data-lucide="external-link" class="w-3 h-3 text-slate-400"></i></a></li>
-                        <li><a href="{{ route('notices.index') }}" class="hover:text-blue-600">Official RCU Notices</a></li>
-                        <li><a href="{{ route('links.index') }}" class="hover:text-blue-600">Important Portals Directory</a></li>
-                        <li><a href="{{ route('upload.create') }}" class="hover:text-blue-600">Contribute Material</a></li>
+                <!-- Portals & Quick Links (md:col-span-2) -->
+                <div class="md:col-span-2 space-y-3">
+                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Official & Portals</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
+                        <li><a href="https://www.rcu.edu.in/" target="_blank" rel="noopener" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400"></i> Official RCU Site</a></li>
+                        <li><a href="{{ route('notices.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="bell" class="w-3.5 h-3.5 text-purple-400"></i> University Notices</a></li>
+                        <li><a href="{{ route('links.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="link-2" class="w-3.5 h-3.5 text-purple-400"></i> Important Portals</a></li>
+                        <li><a href="{{ route('upload.create') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="upload-cloud" class="w-3.5 h-3.5 text-purple-400"></i> Contribute Material</a></li>
                     </ul>
                 </div>
 
-                <!-- Legal / Safety -->
-                <div>
-                    <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Legal & Support</h3>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="{{ route('about') }}" class="hover:text-blue-600">About RCU Hub</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-blue-600">Contact Us</a></li>
-                        <li><a href="{{ route('privacy') }}" class="hover:text-blue-600">Privacy Policy</a></li>
-                        <li><a href="{{ route('terms') }}" class="hover:text-blue-600">Terms & Conditions</a></li>
-                        <li><a href="{{ route('disclaimer') }}" class="hover:text-blue-600">Disclaimer</a></li>
+                <!-- Legal & Support (md:col-span-3) -->
+                <div class="md:col-span-3 space-y-3">
+                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Legal & Support</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
+                        <li><a href="{{ route('about') }}" class="hover:text-[#6C5CE7] transition-colors">About RCU Hub</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-[#6C5CE7] transition-colors">Contact Us</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-[#6C5CE7] transition-colors">Privacy Policy</a></li>
+                        <li><a href="{{ route('terms') }}" class="hover:text-[#6C5CE7] transition-colors">Terms & Conditions</a></li>
+                        <li><a href="{{ route('disclaimer') }}" class="hover:text-[#6C5CE7] transition-colors">Disclaimer & Fair Use</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-slate-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                <p>&copy; {{ date('Y') }} RCU Student Resource Hub. Independent student resource portal.</p>
-                <div class="flex items-center gap-6">
-                    <a href="{{ route('disclaimer') }}" class="hover:text-slate-800">Not Affiliated with RCU</a>
-                    <a href="{{ route('admin.login') }}" class="hover:text-blue-600">Admin Login</a>
+            <!-- Bottom Sub-Bar -->
+            <div class="border-t border-purple-200/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+                <p>&copy; {{ date('Y') }} RCU Student Resource Hub. Independent student community portal.</p>
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <a href="{{ route('disclaimer') }}" class="hover:text-[#6C5CE7] transition-colors">Not Affiliated with RCU</a>
+                    <span class="text-purple-300">•</span>
+                    <a href="{{ route('admin.login') }}" class="hover:text-[#6C5CE7] text-purple-600 font-bold transition-colors">Admin Login</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE BOTTOM NAVIGATION DOCK (Pixel-perfect Claymorphism dock matching Mobile Reference) -->
-    <nav class="lg:hidden fixed bottom-3 inset-x-4 bg-white/90 backdrop-blur-2xl border border-white/90 z-40 py-2.5 px-6 flex items-center justify-between rounded-full shadow-[0_15px_35px_-5px_rgba(108,92,231,0.2),0_1px_3px_rgba(255,255,255,0.9)_inset]">
+    <!-- MOBILE BOTTOM NAVIGATION DOCK (Pixel-perfect Claymorphism dock) -->
+    <nav class="lg:hidden fixed bottom-3 inset-x-3 sm:inset-x-6 max-w-md mx-auto bg-white/90 backdrop-blur-2xl border border-white/90 z-40 py-2.5 px-3 grid grid-cols-4 rounded-full shadow-[0_15px_35px_-5px_rgba(108,92,231,0.22),0_1px_3px_rgba(255,255,255,0.95)_inset]">
         <a href="{{ route('home') }}" class="flex flex-col items-center gap-1 text-[11px] font-bold transition-all {{ request()->routeIs('home') ? 'text-[#6C5CE7] scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
             <i data-lucide="home" class="w-5 h-5 stroke-[2.2]"></i>
-            <span>Home</span>
+            <span class="truncate">Home</span>
         </a>
         <a href="{{ route('resources.index') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('resources.*') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
             <i data-lucide="book-open" class="w-5 h-5 stroke-[2.2]"></i>
-            <span>Resources</span>
+            <span class="truncate">Resources</span>
         </a>
         <a href="{{ route('courses.index') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('courses.*') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
             <i data-lucide="graduation-cap" class="w-5 h-5 stroke-[2.2]"></i>
-            <span>Courses</span>
+            <span class="truncate">Courses</span>
         </a>
         <a href="{{ route('notices.index') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('notices.*') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
             <i data-lucide="bell" class="w-5 h-5 stroke-[2.2]"></i>
-            <span>Notices</span>
-        </a>
-        <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="flex flex-col items-center gap-1 text-[11px] font-semibold transition-all {{ request()->routeIs('dashboard*') || request()->routeIs('login') ? 'text-[#6C5CE7] font-bold scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
-            <i data-lucide="user" class="w-5 h-5 stroke-[2.2]"></i>
-            <span>{{ auth()->check() ? 'Profile' : 'Login' }}</span>
+            <span class="truncate">Notices</span>
         </a>
     </nav>
 

@@ -37,16 +37,16 @@
                 </p>
 
                 <!-- Claymorphism Search Input & Submit Button -->
-                <form action="{{ route('resources.index') }}" method="GET" class="mt-4 max-w-xl mx-auto lg:mx-0">
-                    <div class="relative flex items-center bg-white/95 rounded-full p-2 shadow-[0_12px_28px_-6px_rgba(108,92,231,0.14),0_2px_4px_rgba(255,255,255,1)_inset,0_-3px_8px_rgba(162,155,254,0.15)_inset] border border-purple-100 focus-within:ring-4 focus-within:ring-purple-200/70 transition-all">
-                        <div class="pl-4 text-purple-400">
-                            <i data-lucide="search" class="w-5 h-5"></i>
+                <form action="{{ route('resources.index') }}" method="GET" class="mt-4 max-w-xl mx-auto lg:mx-0 w-full">
+                    <div class="relative flex items-center bg-white/95 rounded-full p-1.5 sm:p-2 shadow-[0_12px_28px_-6px_rgba(108,92,231,0.14),0_2px_4px_rgba(255,255,255,1)_inset,0_-3px_8px_rgba(162,155,254,0.15)_inset] border border-purple-100 focus-within:ring-4 focus-within:ring-purple-200/70 transition-all">
+                        <div class="pl-3 sm:pl-4 text-purple-400 shrink-0">
+                            <i data-lucide="search" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                         </div>
-                        <input type="text" name="q" placeholder="Search for notes, PYQs, courses, or anything..." 
-                            class="w-full bg-transparent border-0 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-0 font-medium">
-                        <button type="submit" class="shrink-0 px-6 py-3 bg-gradient-to-r from-[#7C4DFF] to-[#6C5CE7] hover:from-[#6C5CE7] hover:to-[#5641E5] text-white font-bold text-xs sm:text-sm rounded-full shadow-[0_8px_20px_-4px_rgba(108,92,231,0.5),0_2px_4px_rgba(255,255,255,0.4)_inset,0_-3px_6px_rgba(0,0,0,0.2)_inset] transition-all flex items-center gap-1.5">
+                        <input type="text" name="q" placeholder="Search notes, PYQs, courses..." 
+                            class="w-full min-w-0 bg-transparent border-0 px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-0 font-medium">
+                        <button type="submit" class="shrink-0 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#7C4DFF] to-[#6C5CE7] hover:from-[#6C5CE7] hover:to-[#5641E5] text-white font-bold text-xs sm:text-sm rounded-full shadow-[0_8px_20px_-4px_rgba(108,92,231,0.5),0_2px_4px_rgba(255,255,255,0.4)_inset,0_-3px_6px_rgba(0,0,0,0.2)_inset] transition-all flex items-center gap-1 sm:gap-1.5">
                             <span>Search</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                         </button>
                     </div>
                 </form>
