@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Official RCU Notices & Circulars — RCU Student Resource Hub')
-@section('meta_description', 'Latest examination timetables, results, revaluation notifications, and university circulars directly from Rani Channamma University.')
+@section('title', 'Official RCU Notices & Circulars — Ramchandra Chandravanshi University (RCU)')
+@section('meta_description', 'Latest examination timetables, results, revaluation notifications, and university circulars directly from Ramchandra Chandravanshi University (RCU).')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">

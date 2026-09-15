@@ -11,17 +11,17 @@
 
     <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-2xs space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
         <p>
-            The <strong>RCU Student Resource Hub</strong> was founded with a single mission: to empower students and faculty of Rani Channamma University (RCU) by providing frictionless, high-speed access to quality study material, previous year question papers, syllabi, and official notifications.
+            The <strong>RCU Student Resource Hub</strong> was founded with a single mission: to empower students and faculty of Ramchandra Chandravanshi University (RCU) by providing frictionless, high-speed access to quality study material, previous year question papers, syllabi, and official notifications.
         </p>
         <h3 class="font-bold text-slate-900 text-base pt-2">Our Key Values</h3>
         <ul class="list-disc list-inside space-y-1.5 pl-2 text-slate-600">
             <li><strong>Find Fast:</strong> Students can search, preview, and download study materials within seconds without filling out painful forms.</li>
             <li><strong>Contribute Easily:</strong> Any student or educator can submit lecture notes, solved papers, and lab files directly through our mobile-first upload form.</li>
             <li><strong>Verified Academic Quality:</strong> All community-submitted resources undergo human moderation before being listed publicly.</li>
-            <li><strong>Official Updates:</strong> Direct integration with the university's official portal brings live exam timetables, admit card notices, and results to students without delays.</li>
+            <li><strong>Official Updates:</strong> Direct access to university exam timetables, admit card notices, and results without delays.</li>
         </ul>
-        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs mt-6">
-            <strong>Disclaimer:</strong> This platform is an independent student initiative and is not officially affiliated with or endorsed by Rani Channamma University administration.
+        <div class="p-4 bg-purple-50 border border-purple-200 rounded-xl text-purple-900 text-xs mt-6">
+            <strong>Community Notice:</strong> This platform is an independent student community initiative built for students of Ramchandra Chandravanshi University (RCU).
         </div>
     </div>
 </div>

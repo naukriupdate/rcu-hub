@@ -88,7 +88,7 @@ Route::middleware(['auth', 'active.user'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/my-uploads', [DashboardController::class, 'myUploads'])->name('dashboard.my-uploads');
     Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
-    Route::post('/dashboard/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.profile.update');
+    Route::post('/dashboard/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.profile.update')->middleware('throttle:10,1');
 
     Route::get('/upload', [UploadController::class, 'create'])->name('upload.create');
     Route::post('/upload', [UploadController::class, 'store'])->name('upload.store')->middleware('throttle:10,1');

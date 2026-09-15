@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', "{$resource->title} ({$resource->program->code} Semester {$resource->semester->semester_number}) — RCU Student Resource Hub")
-@section('meta_description', Str::limit($resource->description ?: "Download {$resource->title} for {$resource->program->name} semester {$resource->semester->semester_number} at Rani Channamma University.", 160))
+@section('title', "{$resource->title} ({$resource->program->code} Semester {$resource->semester->semester_number}) — Ramchandra Chandravanshi University (RCU)")
+@section('meta_description', Str::limit($resource->description ?: "Download {$resource->title} for {$resource->program->name} semester {$resource->semester->semester_number} at Ramchandra Chandravanshi University (RCU).", 160))
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

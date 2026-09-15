@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Important University Links — RCU Student Resource Hub')
-@section('meta_description', 'Official university portal links, examination section, student login, and official resources for Rani Channamma University.')
+@section('title', 'Important University Links — Ramchandra Chandravanshi University (RCU)')
+@section('meta_description', 'Official university portal links, examination section, student login, and official resources for Ramchandra Chandravanshi University (RCU).')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
     
     <div class="pb-4 border-b border-slate-200">
         <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Important University Links</h1>
-        <p class="text-xs sm:text-sm text-slate-500 mt-1">Verified direct links to official portals of Rani Channamma University.</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Verified direct links to official portals of Ramchandra Chandravanshi University (RCU).</p>
     </div>
 
     @foreach($links as $category => $items)

@@ -32,9 +32,13 @@
 
     <!-- User Profile Card from Screen 6 -->
     <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-2xs flex items-center gap-4">
-        <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shrink-0">
-            {{ strtoupper(substr($user->name, 0, 2)) }}
-        </div>
+        @if($user->avatar_url)
+            <img src="{{ $user->avatar_url }}" alt="{{ $user->name }}" class="w-16 h-16 rounded-full object-cover border-2 border-purple-100 shadow-xs shrink-0">
+        @else
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-xs">
+                {{ strtoupper(substr($user->name, 0, 2)) }}
+            </div>
+        @endif
         <div class="min-w-0 flex-1">
             <div class="flex items-center gap-2 flex-wrap">
                 <h2 class="text-base sm:text-lg font-bold text-slate-900 truncate">{{ $user->name }}</h2>

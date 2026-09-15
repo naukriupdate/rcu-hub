@@ -5,16 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'RCU Student Resource Hub — Study Smarter. Find Everything You Need')</title>
-    <meta name="description" content="@yield('meta_description', 'Free notes, previous year question papers (PYQs), syllabi, and official notices for Rani Channamma University (RCU) students.')">
+    <title>@yield('title', 'RCU Hub — Ramchandra Chandravanshi University Student Resource Portal')</title>
+    <meta name="description" content="@yield('meta_description', 'Free verified notes, previous year question papers (PYQs), syllabi, and official notices for Ramchandra Chandravanshi University (RCU) students.')">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', 'RCU Student Resource Hub')">
-    <meta property="og:description" content="@yield('meta_description', 'Free academic resources and official notices for RCU students.')">
+    <meta property="og:title" content="@yield('title', 'RCU Student Resource Hub — Ramchandra Chandravanshi University')">
+    <meta property="og:description" content="@yield('meta_description', 'Free notes, previous year questions, syllabi, and official notices for RCU students.')">
+    <meta property="og:image" content="{{ asset('images/rcu-logo.png') }}">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'RCU Hub — Ramchandra Chandravanshi University')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Academic resources, notices, and question papers for RCU students.')">
+    <meta name="twitter:image" content="{{ asset('images/rcu-logo.png') }}">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@graph": [
+            {
+                "@@type": "EducationalOrganization",
+                "@@id": "{{ url('/') }}#organization",
+                "name": "Ramchandra Chandravanshi University (RCU)",
+                "alternateName": "RCU Hub",
+                "url": "{{ url('/') }}",
+                "logo": "{{ asset('images/rcu-logo.png') }}",
+                "email": "priyanshu22431@gmail.com",
+                "telephone": "+919608022431",
+                "sameAs": [
+                    "https://instagram.com/indian_airforce_023",
+                    "https://wa.me/919608022431"
+                ]
+            },
+            {
+                "@@type": "WebSite",
+                "@@id": "{{ url('/') }}#website",
+                "name": "RCU Hub",
+                "url": "{{ url('/') }}",
+                "potentialAction": {
+                    "@@type": "SearchAction",
+                    "target": "{{ url('/resources') }}?search={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Google Fonts: Inter & Caveat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -409,10 +450,25 @@
             100% { transform: translateY(12px) rotate(-3deg) scale(0.98); }
         }
 
+        /* Skeleton Shimmer Loading UI */
+        .skeleton-shimmer {
+            background: linear-gradient(90deg, #F1EEFD 0%, #FAF8FF 50%, #F1EEFD 100%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.8s ease-in-out infinite;
+        }
+        @keyframes skeletonShimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
         /* Respect prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
             .clay-blob-purple, .clay-blob-mint, .clay-blob-yellow, .animate-float {
                 animation: none !important;
+            }
+            .skeleton-shimmer {
+                animation: none !important;
+                background: #F1EEFD;
             }
             .clay-card, .clay-btn, .clay-bubble {
                 transition: none !important;
@@ -486,18 +542,22 @@
                             </a>
                         @endif
 
-                        <!-- User Profile Dropdown -->
-                        <div class="relative group">
-                            <button type="button" class="flex items-center gap-1.5 p-1 sm:p-1.5 rounded-full bg-white/90 border border-purple-100 text-slate-700 hover:shadow-md transition-all focus:outline-none">
-                                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xs shadow-xs">
-                                    {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
-                                </div>
+                        <!-- User Profile Dropdown (Alpine.js Click & Touch Friendly) -->
+                        <div class="relative" x-data="{ userMenuOpen: false }">
+                            <button type="button" @click="userMenuOpen = !userMenuOpen" @click.outside="userMenuOpen = false" class="flex items-center gap-1.5 p-1 sm:p-1.5 rounded-full bg-white/90 border border-purple-100 text-slate-700 hover:shadow-md transition-all focus:outline-none">
+                                @if(auth()->user()->avatar_url)
+                                    <img src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover shadow-xs">
+                                @else
+                                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                                        {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                                    </div>
+                                @endif
                                 <span class="hidden md:inline text-sm font-bold text-slate-800 pr-1">{{ auth()->user()->name }}</span>
-                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 hidden md:inline pr-1"></i>
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 hidden md:inline pr-1 transition-transform" :class="userMenuOpen ? 'rotate-180' : ''"></i>
                             </button>
-                            <div class="absolute right-0 mt-2 w-60 bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_45px_-10px_rgba(108,92,231,0.25)] border border-purple-100 p-2 hidden group-hover:block hover:block z-50 animate__animated animate__fadeIn animate__faster">
+                            <div x-show="userMenuOpen" x-cloak x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_45px_-10px_rgba(108,92,231,0.25)] border border-purple-100 p-2 z-50">
                                 <div class="px-4 py-3 border-b border-slate-100">
-                                    <p class="text-xs text-slate-400 font-medium">Signed in as</p>
+                                    <p class="text-[11px] text-slate-400 font-medium">Signed in as</p>
                                     <p class="text-sm font-bold text-slate-900 truncate">{{ auth()->user()->email }}</p>
                                     <span class="inline-block mt-1 px-2.5 py-0.5 text-[10px] font-bold rounded-full {{ auth()->user()->isAdmin() ? 'bg-amber-100 text-amber-800' : (auth()->user()->isVerifiedTeacher() ? 'bg-emerald-100 text-emerald-800' : 'bg-purple-100 text-purple-800') }}">
                                         {{ auth()->user()->isAdmin() ? 'Admin' : (auth()->user()->isVerifiedTeacher() ? '🏅 Verified Teacher' : ucfirst(auth()->user()->role)) }}
@@ -508,19 +568,22 @@
                                         <i data-lucide="shield" class="w-4 h-4 text-[#6C5CE7]"></i> Admin Panel
                                     </a>
                                 @endif
-                                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-2xl">
-                                    <i data-lucide="user" class="w-4 h-4 text-slate-400"></i> My Account
+                                <a href="{{ route('dashboard.profile') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7] font-semibold rounded-2xl">
+                                    <i data-lucide="user-cog" class="w-4 h-4 text-slate-400"></i> Profile Settings
                                 </a>
-                                <a href="{{ route('dashboard.my-uploads') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-2xl">
+                                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7] font-semibold rounded-2xl">
+                                    <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i> My Account
+                                </a>
+                                <a href="{{ route('dashboard.my-uploads') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7] font-semibold rounded-2xl">
                                     <i data-lucide="folder" class="w-4 h-4 text-slate-400"></i> My Uploads
                                 </a>
-                                <a href="{{ route('upload.create') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-2xl">
+                                <a href="{{ route('upload.create') }}" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7] font-semibold rounded-2xl">
                                     <i data-lucide="upload-cloud" class="w-4 h-4 text-slate-400"></i> Upload Resource
                                 </a>
                                 <div class="border-t border-slate-100 my-1"></div>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-rose-600 hover:bg-rose-50 font-semibold rounded-2xl">
+                                    <button type="submit" class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-rose-600 hover:bg-rose-50 font-semibold rounded-2xl text-left">
                                         <i data-lucide="log-out" class="w-4 h-4 text-rose-500"></i> Sign out
                                     </button>
                                 </form>
@@ -620,6 +683,40 @@
                 <i data-lucide="phone" class="w-4 h-4"></i> Contact
             </a>
 
+            @auth
+                <div class="border-t border-slate-100 my-2 pt-2 space-y-1">
+                    <div class="px-3.5 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">My Account</div>
+                    <div class="p-3 mb-2 rounded-2xl bg-purple-50/70 border border-purple-100 flex items-center gap-3">
+                        @if(auth()->user()->avatar_url)
+                            <img src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}" class="w-10 h-10 rounded-full object-cover border border-purple-200 shadow-xs">
+                        @else
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#6C5CE7] to-[#8C7CFF] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                                {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                            </div>
+                        @endif
+                        <div class="min-w-0 flex-1">
+                            <h4 class="font-bold text-xs text-slate-900 truncate">{{ auth()->user()->name }}</h4>
+                            <p class="text-[10px] text-slate-500 truncate">{{ auth()->user()->email }}</p>
+                        </div>
+                    </div>
+                    <a href="{{ route('dashboard.profile') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-semibold rounded-xl text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7]">
+                        <i data-lucide="user-cog" class="w-4 h-4 text-purple-500"></i> Profile Settings
+                    </a>
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-semibold rounded-xl text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7]">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4 text-purple-500"></i> My Account Overview
+                    </a>
+                    <a href="{{ route('dashboard.my-uploads') }}" class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-semibold rounded-xl text-slate-700 hover:bg-purple-50 hover:text-[#6C5CE7]">
+                        <i data-lucide="folder" class="w-4 h-4 text-purple-500"></i> My Uploads
+                    </a>
+                    <form action="{{ route('logout') }}" method="POST" class="pt-2">
+                        @csrf
+                        <button type="submit" class="w-full flex items-center gap-3 px-3.5 py-2.5 text-sm font-bold text-rose-600 hover:bg-rose-50 rounded-xl transition-colors text-left">
+                            <i data-lucide="log-out" class="w-4 h-4 text-rose-500"></i> Sign Out
+                        </button>
+                    </form>
+                </div>
+            @endauth
+
             @guest
                 <div class="border-t border-slate-100 my-2 pt-2 px-3 space-y-2">
                     <a href="{{ route('login') }}" class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
@@ -635,12 +732,11 @@
         <!-- Drawer Footer with Social Icons -->
         <div class="p-5 bg-slate-900 text-white text-xs">
             <p class="font-bold text-slate-200">RCU Student Resource Hub</p>
-            <p class="text-[11px] text-slate-400 mt-0.5">Not affiliated with RCU. For student use only.</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Ramchandra Chandravanshi University Student Community</p>
             <div class="flex items-center gap-4 mt-4 text-slate-400">
-                <a href="#" class="hover:text-white"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                <a href="#" class="hover:text-white"><i data-lucide="send" class="w-4 h-4"></i></a>
-                <a href="#" class="hover:text-white"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                <a href="#" class="hover:text-white"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                <a href="https://wa.me/919608022431" target="_blank" rel="noopener" class="hover:text-[#25D366] transition-colors" title="WhatsApp"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                <a href="https://instagram.com/indian_airforce_023" target="_blank" rel="noopener" class="hover:text-[#E1306C] transition-colors" title="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                <a href="mailto:priyanshu22431@gmail.com" class="hover:text-[#3B82F6] transition-colors" title="Email"><i data-lucide="mail" class="w-4 h-4"></i></a>
             </div>
         </div>
     </aside>
@@ -655,7 +751,7 @@
         </div>
     @endif
 
-    @if(session('error') || $errors->any())
+    @if(session('error') || (isset($errors) && $errors->any()))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
             <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 flex items-start gap-3 shadow-xs">
                 <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-600 shrink-0 mt-0.5"></i>
@@ -663,7 +759,7 @@
                     @if(session('error'))
                         <div class="font-medium">{{ session('error') }}</div>
                     @endif
-                    @if($errors->any())
+                    @if(isset($errors) && $errors->any())
                         <ul class="list-disc list-inside mt-1 space-y-0.5 text-xs">
                             @foreach($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -680,14 +776,36 @@
         @yield('content')
     </main>
 
-    <!-- CLAYMORPHISM FOOTER -->
+    <!-- FLOATING CONTACT ICONS (Fixed on Right Edge: WhatsApp, Instagram, Email) -->
+    <aside class="fixed right-3 sm:right-5 bottom-20 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 z-40 flex flex-col gap-2.5 pointer-events-auto" aria-label="Quick contact links">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/919608022431" target="_blank" rel="noopener noreferrer" 
+           class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_8px_20px_-4px_rgba(37,211,102,0.5)] hover:scale-110 active:scale-95 transition-all group" 
+           aria-label="Contact on WhatsApp" title="WhatsApp: +91 9608022431">
+            <i data-lucide="message-circle" class="w-5 h-5 fill-white/20"></i>
+        </a>
+        <!-- Instagram -->
+        <a href="https://instagram.com/indian_airforce_023" target="_blank" rel="noopener noreferrer" 
+           class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-[#FD1D1D] via-[#E1306C] to-[#833AB4] text-white flex items-center justify-center shadow-[0_8px_20px_-4px_rgba(225,48,108,0.5)] hover:scale-110 active:scale-95 transition-all group" 
+           aria-label="Follow on Instagram" title="Instagram: @indian_airforce_023">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+        </a>
+        <!-- Email -->
+        <a href="mailto:priyanshu22431@gmail.com" 
+           class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#3B82F6] text-white flex items-center justify-center shadow-[0_8px_20px_-4px_rgba(59,130,246,0.5)] hover:scale-110 active:scale-95 transition-all group" 
+           aria-label="Send an Email" title="Email: priyanshu22431@gmail.com">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+        </a>
+    </aside>
+
+    <!-- CLAYMORPHISM FOOTER (Matching Reference) -->
     <footer class="relative mt-20 w-full max-w-full overflow-hidden bg-gradient-to-b from-white/90 via-[#F7F5FE] to-[#EDE8FE] border-t border-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] shadow-[0_-15px_40px_-10px_rgba(108,92,231,0.09),0_2px_4px_rgba(255,255,255,0.9)_inset]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pb-12">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 mb-12">
-                <!-- Brand col (md:col-span-5) -->
-                <div class="md:col-span-5 space-y-4">
+                <!-- Brand col (md:col-span-4) -->
+                <div class="md:col-span-4 space-y-4">
                     <div class="flex items-center gap-3">
-                        <img src="{{ asset('images/rcu-logo.png') }}" alt="RCU Hub Logo" class="w-12 h-12 object-contain rounded-2xl shadow-[0_6px_14px_rgba(108,92,231,0.25)]">
+                        <img src="{{ asset('images/rcu-logo.png') }}" alt="RCU Hub Logo" class="w-12 h-12 object-contain rounded-2xl shadow-[0_6px_14px_rgba(108,92,231,0.25)]" width="48" height="48">
                         <div>
                             <div class="flex items-center gap-1">
                                 <span class="font-black text-2xl text-slate-900 tracking-tight">RCU</span>
@@ -700,54 +818,81 @@
                         </div>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-md font-medium">
-                        An independent, open community platform built for Ramchandra Chandravanshi University (RCU) students and teachers to collaborate, discover verified study materials, question papers, and official notices.
+                        An open education and study resources portal for Ramchandra Chandravanshi University (RCU) students. Access syllabus, notes, PYQs, and verified academic circulars.
                     </p>
-                    <div class="pt-2 flex flex-wrap items-center gap-2 text-xs">
-                        <span class="px-3 py-1 rounded-full bg-white text-slate-600 font-semibold border border-purple-100 shadow-xs">🎓 By Students, For Students</span>
-                        <span class="px-3 py-1 rounded-full bg-white text-slate-600 font-semibold border border-purple-100 shadow-xs">⚡ Fast & Free</span>
+                    <div class="pt-1 flex flex-wrap items-center gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-white text-slate-600 font-semibold border border-purple-100 shadow-xs">🎓 Student Community</span>
+                        <span class="px-3 py-1 rounded-full bg-white text-slate-600 font-semibold border border-purple-100 shadow-xs">⚡ Fast & Responsive</span>
                     </div>
                 </div>
 
-                <!-- Academic Programs (md:col-span-2) -->
+                <!-- Quick Links (md:col-span-2) -->
                 <div class="md:col-span-2 space-y-3">
-                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Academic Programs</h3>
+                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Quick Links</h3>
                     <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
-                        <li><a href="{{ route('resources.index', ['course' => 'bca']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> BCA Notes & PYQs</a></li>
-                        <li><a href="{{ route('resources.index', ['course' => 'bba']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> BBA Resources</a></li>
-                        <li><a href="{{ route('resources.index', ['course' => 'ba']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> BA Materials</a></li>
-                        <li><a href="{{ route('resources.index', ['course' => 'bsc']) }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> B.Sc Question Papers</a></li>
+                        <li><a href="{{ route('home') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Home</a></li>
+                        <li><a href="{{ route('resources.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Resources</a></li>
+                        <li><a href="{{ route('courses.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Courses</a></li>
+                        <li><a href="{{ route('notices.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Notices</a></li>
                     </ul>
                 </div>
 
-                <!-- Portals & Quick Links (md:col-span-2) -->
+                <!-- Useful Links (md:col-span-2) -->
                 <div class="md:col-span-2 space-y-3">
-                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Official & Portals</h3>
+                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Useful Links</h3>
                     <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
-                        <li><a href="https://www.rcu.edu.in/" target="_blank" rel="noopener" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400"></i> Official RCU Site</a></li>
-                        <li><a href="{{ route('notices.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="bell" class="w-3.5 h-3.5 text-purple-400"></i> University Notices</a></li>
-                        <li><a href="{{ route('links.index') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="link-2" class="w-3.5 h-3.5 text-purple-400"></i> Important Portals</a></li>
-                        <li><a href="{{ route('upload.create') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="upload-cloud" class="w-3.5 h-3.5 text-purple-400"></i> Contribute Material</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> About RCU Hub</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Contact Us</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Privacy Policy</a></li>
+                        <li><a href="{{ route('terms') }}" class="hover:text-[#6C5CE7] transition-colors flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400"></i> Terms & Conditions</a></li>
                     </ul>
                 </div>
 
-                <!-- Legal & Support (md:col-span-3) -->
-                <div class="md:col-span-3 space-y-3">
-                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Legal & Support</h3>
+                <!-- Contact Us & Social (md:col-span-4) -->
+                <div class="md:col-span-4 space-y-3">
+                    <h3 class="text-xs font-extrabold text-[#6C5CE7] uppercase tracking-wider">Contact Us</h3>
                     <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
-                        <li><a href="{{ route('about') }}" class="hover:text-[#6C5CE7] transition-colors">About RCU Hub</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-[#6C5CE7] transition-colors">Contact Us</a></li>
-                        <li><a href="{{ route('privacy') }}" class="hover:text-[#6C5CE7] transition-colors">Privacy Policy</a></li>
-                        <li><a href="{{ route('terms') }}" class="hover:text-[#6C5CE7] transition-colors">Terms & Conditions</a></li>
-                        <li><a href="{{ route('disclaimer') }}" class="hover:text-[#6C5CE7] transition-colors">Disclaimer & Fair Use</a></li>
+                        <li>
+                            <a href="https://wa.me/919608022431" target="_blank" rel="noopener noreferrer" class="hover:text-[#25D366] transition-colors flex items-center gap-2">
+                                <i data-lucide="phone" class="w-4 h-4 text-[#25D366]"></i>
+                                <span>+91 9608022431 (WhatsApp)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/indian_airforce_023" target="_blank" rel="noopener noreferrer" class="hover:text-[#E1306C] transition-colors flex items-center gap-2">
+                                <i data-lucide="instagram" class="w-4 h-4 text-[#E1306C]"></i>
+                                <span>@indian_airforce_023</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:priyanshu22431@gmail.com" class="hover:text-[#3B82F6] transition-colors flex items-center gap-2">
+                                <i data-lucide="mail" class="w-4 h-4 text-[#3B82F6]"></i>
+                                <span>priyanshu22431@gmail.com</span>
+                            </a>
+                        </li>
                     </ul>
+                    <div class="pt-2">
+                        <span class="block text-[11px] font-bold text-slate-400 uppercase mb-2">Follow Us</span>
+                        <div class="flex items-center gap-2.5">
+                            <a href="https://instagram.com/indian_airforce_023" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-pink-100 text-[#E1306C] hover:bg-[#E1306C] hover:text-white flex items-center justify-center transition-all shadow-xs" title="Instagram" aria-label="Instagram">
+                                <i data-lucide="instagram" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://wa.me/919608022431" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-emerald-100 text-[#25D366] hover:bg-[#25D366] hover:text-white flex items-center justify-center transition-all shadow-xs" title="WhatsApp" aria-label="WhatsApp">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            </a>
+                            <a href="mailto:priyanshu22431@gmail.com" class="w-8 h-8 rounded-full bg-blue-100 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white flex items-center justify-center transition-all shadow-xs" title="Email" aria-label="Email">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Bottom Sub-Bar -->
             <div class="border-t border-purple-200/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
-                <p>&copy; {{ date('Y') }} RCU Student Resource Hub. Independent student community portal.</p>
+                <p>&copy; {{ date('Y') }} Ramchandra Chandravanshi University (RCU). All rights reserved.</p>
                 <div class="flex items-center gap-4 sm:gap-6">
-                    <a href="{{ route('disclaimer') }}" class="hover:text-[#6C5CE7] transition-colors">Not Affiliated with RCU</a>
+                    <span class="text-slate-400">Learn • Grow • Build Your Future</span>
                     <span class="text-purple-300">•</span>
                     <a href="{{ route('admin.login') }}" class="hover:text-[#6C5CE7] text-purple-600 font-bold transition-colors">Admin Login</a>
                 </div>
@@ -755,7 +900,7 @@
         </div>
     </footer>
 
-    <!-- MOBILE BOTTOM NAVIGATION DOCK (Pixel-perfect Claymorphism dock) -->
+    <!-- MOBILE BOTTOM NAVIGATION DOCK (4 Equal Items: Home, Resources, Courses, Notices) -->
     <nav class="lg:hidden fixed bottom-3 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] max-w-md bg-white/90 backdrop-blur-2xl border border-white/90 z-40 py-2.5 px-3 grid grid-cols-4 rounded-full shadow-[0_15px_35px_-5px_rgba(108,92,231,0.22),0_1px_3px_rgba(255,255,255,0.95)_inset]">
         <a href="{{ route('home') }}" class="flex flex-col items-center gap-1 text-[11px] font-bold transition-all {{ request()->routeIs('home') ? 'text-[#6C5CE7] scale-105' : 'text-slate-400 hover:text-[#6C5CE7]' }}">
             <i data-lucide="home" class="w-5 h-5 stroke-[2.2]"></i>

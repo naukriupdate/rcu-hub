@@ -64,6 +64,14 @@ class User extends Authenticatable
         return $this->status === 'active';
     }
 
+    public function getAvatarUrlAttribute(): ?string
+    {
+        if ($this->avatar && file_exists(public_path($this->avatar))) {
+            return asset($this->avatar);
+        }
+        return null;
+    }
+
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);

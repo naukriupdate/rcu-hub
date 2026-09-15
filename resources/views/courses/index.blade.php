@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'RCU Academic Programs & Courses — RCU Student Resource Hub')
-@section('meta_description', 'Explore courses, departments, semesters, and subjects offered at Rani Channamma University.')
+@section('title', 'Academic Programs & Courses — Ramchandra Chandravanshi University (RCU)')
+@section('meta_description', 'Explore courses, departments, semesters, and subjects offered at Ramchandra Chandravanshi University (RCU).')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">

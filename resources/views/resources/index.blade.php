@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Browse Study Resources — RCU Student Resource Hub')
-@section('meta_description', 'Discover notes, previous year question papers, syllabi and study material for all courses at Rani Channamma University.')
+@section('title', 'Browse Study Resources — Ramchandra Chandravanshi University (RCU)')
+@section('meta_description', 'Discover notes, previous year question papers, syllabi and study material for all courses at Ramchandra Chandravanshi University (RCU).')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">

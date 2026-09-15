@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', "{$program->name} ({$program->code}) — Resources & Syllabus")
-@section('meta_description', "Explore semester-wise notes, previous year question papers, and syllabus for {$program->name} at Rani Channamma University.")
+@section('title', "{$program->name} ({$program->code}) — Ramchandra Chandravanshi University (RCU)")
+@section('meta_description', "Explore semester-wise notes, previous year question papers, and syllabus for {$program->name} at Ramchandra Chandravanshi University (RCU).")
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
